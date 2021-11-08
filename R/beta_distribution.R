@@ -4,7 +4,9 @@
 #' the data frame.
 #' @param alpha First shape parameter of the beta distribution, must be greater than 0
 #' @param beta Second shape parameter of the beta distribution, must be greater than 0
-#' @param conf Confidence interval, must be between [0, 1]. Defaults to 0.95.
+#' @param conf Confidence interval, must be between `[0, 1]`. Defaults to 0.95.
+#'
+#' @importFrom
 #'
 #' @export
 #'
@@ -38,10 +40,10 @@ beta_interval <- function(.data, alpha, beta, conf = 0.95) {
 #'
 #' @param alpha First shape parameter of the beta distribution, must be greater than 0
 #' @param beta Second shape parameter of the beta distribution, must be greater than 0
-#' @param conf Confidence interval, must be between [0, 1].
+#' @param conf Confidence interval, must be between `[0, 1]`.
 beta_lower <- function(alpha, beta, conf) {
 
-  qbeta((1-conf)/2, alpha, beta)
+  stats::qbeta((1-conf)/2, alpha, beta)
 
 }
 
@@ -52,7 +54,7 @@ beta_lower <- function(alpha, beta, conf) {
 #' @param conf Confidence interval, must be between [0, 1].
 beta_upper <- function(alpha, beta, conf) {
 
-  qbeta((1-conf)/2+conf, alpha, beta)
+  stats::qbeta((1-conf)/2+conf, alpha, beta)
 
 }
 
