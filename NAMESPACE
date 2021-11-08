@@ -3,3 +3,5 @@
 export(beta_interval)
 export(expit)
 export(logit)
+importFrom(dplyr,mutate)
+importFrom(stats,qbeta)

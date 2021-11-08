@@ -11,7 +11,7 @@ beta_upper(alpha, beta, conf)
 
 \item{beta}{Second shape parameter of the beta distribution, must be greater than 0}
 
-\item{conf}{Confidence interval, must be between \link{0, 1}.}
+\item{conf}{Confidence interval, must be between \verb{[0, 1]}.}
 }
 \description{
 Util function for finding the upper bound of a confidence interval on a beta distribution

@@ -14,7 +14,7 @@ the data frame.}
 
 \item{beta}{Second shape parameter of the beta distribution, must be greater than 0}
 
-\item{conf}{Confidence interval, must be between \link{0, 1}. Defaults to 0.95.}
+\item{conf}{Confidence interval, must be between \verb{[0, 1]}. Defaults to 0.95.}
 }
 \description{
 Apply a confidence interval to values in a dataframe based on the beta distribution.
