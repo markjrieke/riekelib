@@ -1,5 +1,5 @@
 Package: riekelib
-Title: A library of personal functions
+Title: A collection of personal functions
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Mark",
