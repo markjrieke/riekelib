@@ -5,8 +5,7 @@ Authors@R:
     person(given = "Mark",
            family = "Rieke",
            role = c("aut", "cre"),
-           email = "markjrieke@gmail.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "markjrieke@gmail.com")
 Description: A collection of functions for personal/professional use, not super 
              well documented or tested. Depending on how the package grows, some
              functions (or groups of functions) may be formalized in their own 
