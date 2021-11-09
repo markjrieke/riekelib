@@ -2,6 +2,10 @@
 
 export(beta_interval)
 export(expit)
+export(fetch_survey_named)
 export(logit)
 importFrom(dplyr,mutate)
+importFrom(qualtRics,all_surveys)
+importFrom(qualtRics,fetch_id)
+importFrom(qualtRics,fetch_survey)
 importFrom(stats,qbeta)
