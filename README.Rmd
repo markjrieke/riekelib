@@ -27,10 +27,10 @@ devtools::install_github("https://github.com/markjrieke/riekelib")
 
 ## Usage
 
-There are currently three main functions in this package:
+There are currently three function groups in this package:
 
-1. `beta_interval()` adds columns for the lower and upper bound of a confidence interval based on the beta distribution.
-2. `logit()` transforms a value on a bound scale to an unbounded scale (e.x., percentages bound by `[0, 1]` -> `[-Inf, Inf]`).
-3. `expit()` transforms a value on an unbounded scale to a bound scale (e.x., `[-Inf, Inf]` -> percentages bound by `[0, 1]`).
+1. `stats_extensions.R` contains functions that provide an interface to the `stats` package; namely, adding confidence intervals to common distributions. 
+2. `bound_transforms.R` contains functions that rescale values on a bound scale to an unbounded scale, and vice-versa.
+3. `qualtrics_extensions.R` contains functions that build upon the `qualtRics` package, but would be unlikely to be accepted in a PR. 
 
 
