@@ -64,4 +64,72 @@ beta_upper <- function(alpha, beta, conf) {
 
 }
 
+#' Apply a confidence interval to values in a dataframe based on the normal distribution.
+#'
+#' @param .data Data frame; a confidence interval will be applied to each row in
+#' the data frame.
+#' @param mean Mean of the distribution
+#' @param std_dev Standard deviation of the distribution
+#' @param conf Confidence interval, must be between `[0, 1]`. Defaults to 0.95.
+#'
+#' @export
+#'
+#' @importFrom dplyr mutate
+#'
+#' @examples
+#' \dontrun{
+#' # create example df
+#' mean <- rnorm(10, 100, 20)
+#' std_dev <- rnorm(10, 80, 10)
+#' example <- dplyr::bind_cols(mean, std_dev)
+#' colnames(example) <- c("mean", "std_dev")
+#'
+#' # apply the default confidence interval of 0.95
+#' normal_interval(example, mean, std_dev)
+#'
+#' # apply a custom confidence interval
+#' normal_interval(example, mean, std_dev, conf = 0.99)
+#'
+#' }
+#'
+normal_interval <- function(.data, mean, std_dev, conf = 0.95) {
+
+  dplyr::mutate(
+    .data,
+    ci_lower = normal_lower(mean, std_dev, conf),
+    ci_upper = normal_upper(mean, std_dev, conf)
+  )
+
+}
+
+#' Util function for finding the lower bound of a confidence interval on a normal distribution
+#'
+#' @param mean Mean of the distribution
+#' @param std_dev Standard deviation of the distribution
+#' @param conf Confidence interval, must be between `[0, 1]`
+#'
+#' @importFrom stats qnorm
+#'
+normal_lower <- function(mean, std_dev, conf) {
+
+  stats::qnorm((1-conf)/2, mean, std_dev)
+
+}
+
+#' Util function for finding the upper bound of a confidence interval on a normal distribution
+#'
+#' @param mean Mean of the distribution
+#' @param std_dev Standard deviation of the distribution
+#' @param conf Confidence interval, must be between `[0, 1]`
+#'
+#' @importFrom stats qnorm
+#'
+normal_upper <- function(mean, std_dev, conf) {
+
+  stats::qnorm((1-conf)/2+conf, mean, std_dev)
+
+}
+
+
+
 
