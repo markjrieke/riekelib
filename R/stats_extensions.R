@@ -30,8 +30,8 @@ beta_interval <- function(.data, alpha, beta, conf = 0.95) {
 
   dplyr::mutate(
     .data,
-    ci_lower = beta_lower(alpha, beta, conf),
-    ci_upper = beta_upper(alpha, beta, conf)
+    ci_lower = beta_lower({{alpha}}, {{beta}}, {{conf}}),
+    ci_upper = beta_upper({{alpha}}, {{beta}}, {{conf}})
   )
 
 }
@@ -96,8 +96,8 @@ normal_interval <- function(.data, mean, std_dev, conf = 0.95) {
 
   dplyr::mutate(
     .data,
-    ci_lower = normal_lower(mean, std_dev, conf),
-    ci_upper = normal_upper(mean, std_dev, conf)
+    ci_lower = normal_lower({{mean}}, {{std_dev}}, {{conf}}),
+    ci_upper = normal_upper({{mean}}, {{std_dev}}, {{conf}})
   )
 
 }
