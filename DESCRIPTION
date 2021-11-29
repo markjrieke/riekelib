@@ -16,7 +16,8 @@ BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
   dplyr,
   stats,
-  qualtRics
+  qualtRics,
+  tibble
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
