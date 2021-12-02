@@ -27,7 +27,7 @@ devtools::install_github("https://github.com/markjrieke/riekelib")
 
 ## Usage
 
-There are currently three function groups in this package:
+There are currently four function groups in this package:
 
 1.  `stats_extensions.R` contains functions that provide an interface to
     the `stats` package; namely, adding confidence intervals to common
@@ -36,3 +36,5 @@ There are currently three function groups in this package:
     bound scale to an unbounded scale, and vice-versa.
 3.  `qualtrics_extensions.R` contains functions that build upon the
     `qualtRics` package, but would be unlikely to be accepted in a PR.
+4.  `tidyverse_extensions.R` contains functions that aggregate common
+    data transformation steps into single function calls.

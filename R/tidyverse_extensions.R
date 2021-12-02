@@ -28,13 +28,9 @@ arrange_vector <- function(x, desc = FALSE) {
   vector <- tibble::as_tibble(x)
 
   if (desc == FALSE) {
-
     vector <- dplyr::arrange(vector, value)
-
   } else {
-
     vector <- dplyr::arrange(vector, dplyr::desc(value))
-
   }
 
   vector <- dplyr::pull(vector, value)
