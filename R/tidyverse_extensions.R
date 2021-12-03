@@ -38,3 +38,30 @@ arrange_vector <- function(x, desc = FALSE) {
   return(vector)
 
 }
+
+#' Return the percentage each value or combination of values appear in a tibble or dataframe
+#'
+#' @param .data a tibble or dataframe
+#' @param ... parameters to pass to `dplyr::count()`
+#'
+#' @export
+#'
+#' @importFrom dplyr count
+#' @importFrom dplyr mutate
+#' @importFrom dplyr select
+#'
+#' @examples
+#' \dontrun{
+#' # return a tibble of the percentage of gear type in the `mtcars` dataset
+#' percent(mtcars, gear)
+#' }
+percent <- function(.data, ...) {
+
+  df <- dplyr::count(.data, ...)
+  df <- dplyr::mutate(df, pct = n/sum(n))
+  df <- dplyr::select(df, -n)
+
+  return(df)
+
+}
+

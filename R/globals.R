@@ -1,3 +1,3 @@
 globalVariables(c(
-  "value"
+  "value", "n"
 ))
