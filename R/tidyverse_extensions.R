@@ -65,3 +65,20 @@ percent <- function(.data, ...) {
 
 }
 
+#' Determine the number of `cells` in a tibble or dataframe
+#'
+#' @param .data a tibble or dataframe
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # return the number of cells in the `iris` dataset
+#' cells(iris)
+#' }
+ncells <- function(.data) {
+
+  nrow(.data) * ncol(.data)
+
+}
+
