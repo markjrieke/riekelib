@@ -4,12 +4,14 @@
 \alias{percent}
 \title{Return the percentage each value or combination of values appear in a tibble or dataframe}
 \usage{
-percent(.data, ...)
+percent(.data, ..., .keep_n = FALSE)
 }
 \arguments{
 \item{.data}{a tibble or dataframe}
 
 \item{...}{parameters to pass to \code{dplyr::count()}}
+
+\item{.keep_n}{logical; keep or remove the \code{n} col created by \code{dplyr::count()}. Defaults to \code{FALSE}.}
 }
 \description{
 Return the percentage each value or combination of values appear in a tibble or dataframe
