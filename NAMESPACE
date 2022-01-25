@@ -2,11 +2,13 @@
 
 export(arrange_vector)
 export(beta_interval)
+export(cramer_v)
 export(expit)
 export(fetch_survey_named)
 export(logit)
 export(ncells)
 export(normal_interval)
+export(pct_diff)
 export(percent)
 importFrom(dplyr,arrange)
 importFrom(dplyr,count)
