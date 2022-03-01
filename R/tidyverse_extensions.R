@@ -86,3 +86,40 @@ ncells <- function(.data) {
 
 }
 
+#' Call ggsave with default parameters
+#'
+#' @param filename File name to create on disk.
+#' @param width,height,units Plot size in `units` ("in", "cm", "mm", or "px").
+#' @param dpi Plot resolution. Also accepts a string input: "retina" (320), "print" (300), or "screen" (72).
+#' @param ... Other arguments passed to `ggplot2::ggsave()`.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' library(ggplot2)
+#' ggplot(mtcars, aes(mpg, wt)) +
+#'   geom_point()
+#'
+#' ggquicksave("mtcars.png")
+#' }
+#'
+ggquicksave <- function(filename,
+                        width = 9,
+                        height = 6,
+                        units = "in",
+                        dpi = 500,
+                        ...) {
+
+  ggplot2::ggsave(
+    filename = filename,
+    width = width,
+    height = height,
+    units = units,
+    dpi = dpi,
+    ...
+  )
+
+}
+
+
