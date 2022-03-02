@@ -15,10 +15,15 @@ URL: https://github.com/markjrieke/riekelib
 BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
   dplyr,
-  stats,
+  generics,
+  ggplot2,
+  purrr,
   qualtRics,
+  rlang,
+  rsample,
+  stats,
   tibble,
-  ggplot2
+  tidyr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
