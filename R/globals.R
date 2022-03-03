@@ -1,3 +1,3 @@
 globalVariables(c(
-  "value", "n"
+  "value", "n", ".pred", "model", "variable"
 ))
