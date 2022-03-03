@@ -1,44 +1,4 @@
-#' Fit a model and predict based on a single bootstrap resample
-#'
-#' @param workflow An un-fitted workflow object.
-#' @param boot_splits A bootstrap split object created by `rsample::bootstraps()`.
-#' @param new_data New data to make predictions
-#' @param index Index of `boot_splits` to use for training
-#' @param seed A single seed value to be passed to `set.seed()`.
-#'
-#' @importFrom rsample training
-#' @importFrom generics fit
-#' @importFrom stats predict
-#' @importFrom dplyr rename
-#' @importFrom rlang sym
-#'
-predict_boot_internal <- function(workflow,
-                                  boot_splits,
-                                  new_data,
-                                  index,
-                                  seed = 123) {
-
-  # get training data from bootstrap resample split
-  boot_train <-
-    rsample::training(
-      boot_splits$splits[[index]]
-    )
-
-  # set seed
-  set.seed(seed + index)
-
-  # fit workflow to training data
-  model <- generics::fit(workflow, boot_train)
-
-  # predict given model and new data
-  preds <- stats::predict(model, new_data)
-
-  # rename .pred col based on index number
-  preds <- dplyr::rename(preds, !!rlang::sym(paste0(".pred_", index)) := .pred)
-
-  return(preds)
-
-}
+# -------------------------------externals--------------------------------------
 
 #' Fit and predict a workflow using many bootstrap resamples.
 #'
@@ -92,7 +52,7 @@ predict_boots <- function(workflow,
   preds <-
     purrr::map_dfc(
       seq(1, n_models),
-      ~predict_boot_internal(
+      ~predict_single_boot(
         workflow = workflow,
         boot_splits = training_boots,
         new_data = new_data,
@@ -117,6 +77,50 @@ predict_boots <- function(workflow,
       preds,
       .preds = c(model, .pred)
     )
+
+  return(preds)
+
+}
+
+# -------------------------------internals--------------------------------------
+
+#' Fit a model and predict based on a single bootstrap resample
+#'
+#' @param workflow An un-fitted workflow object.
+#' @param boot_splits A bootstrap split object created by `rsample::bootstraps()`.
+#' @param new_data New data to make predictions
+#' @param index Index of `boot_splits` to use for training
+#' @param seed A single seed value to be passed to `set.seed()`.
+#'
+#' @importFrom rsample training
+#' @importFrom generics fit
+#' @importFrom stats predict
+#' @importFrom dplyr rename
+#' @importFrom rlang sym
+#'
+predict_single_boot <- function(workflow,
+                                boot_splits,
+                                new_data,
+                                index,
+                                seed = 123) {
+
+  # get training data from bootstrap resample split
+  boot_train <-
+    rsample::training(
+      boot_splits$splits[[index]]
+    )
+
+  # set seed
+  set.seed(seed + index)
+
+  # fit workflow to training data
+  model <- generics::fit(workflow, boot_train)
+
+  # predict given model and new data
+  preds <- stats::predict(model, new_data)
+
+  # rename .pred col based on index number
+  preds <- dplyr::rename(preds, !!rlang::sym(paste0(".pred_", index)) := .pred)
 
   return(preds)
 
