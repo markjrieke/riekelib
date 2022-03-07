@@ -38,5 +38,3 @@ There are currently four function groups in this package:
     `qualtRics` package, but would be unlikely to be accepted in a PR.
 4.  `tidyverse_extensions.R` contains functions that aggregate common
     data transformation steps into single function calls.
-5.  `workboots.R` contains functions that generate bootstrap prediction 
-    intervals from tidymodel workflows.
