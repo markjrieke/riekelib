@@ -122,4 +122,27 @@ ggquicksave <- function(filename,
 
 }
 
+#' Color text using HTML color styling
+#'
+#' @description Useful in conjuction with ggtext and glue
+#'
+#' @param text text to be colored
+#' @param hex_color_code color to be applied to the text
+#'
+#' @export
+#' \dontrun{
+#' color_text("Hello there!", "#BD43BF")
+#' }
+color_text <- function(text, hex_color_code) {
+
+  paste0(
+    "<span style=color:'",
+    hex_color_code,
+    "'>",
+    text,
+    "</span>"
+  )
+
+}
+
 
