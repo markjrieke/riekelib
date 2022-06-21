@@ -11,7 +11,7 @@ ggquicksave(
   height = 6,
   units = "in",
   dpi = 500,
-  device = "png",
+  device = grDevices::png,
   ...
 )
 }

@@ -112,7 +112,7 @@ ggquicksave <- function(filename,
                         height = 6,
                         units = "in",
                         dpi = 500,
-                        device = "png",
+                        device = grDevices::png,
                         ...) {
 
   ggplot2::ggsave(
