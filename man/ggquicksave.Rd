@@ -6,6 +6,7 @@
 \usage{
 ggquicksave(
   filename,
+  plot = ggplot2::last_plot(),
   width = 9,
   height = 6,
   units = "in",
@@ -16,6 +17,8 @@ ggquicksave(
 }
 \arguments{
 \item{filename}{File name to create on disk.}
+
+\item{plot}{Plot to save, defaults to last plot displayed.}
 
 \item{width, height, units}{Plot size in \code{units} ("in", "cm", "mm", or "px").}
 
