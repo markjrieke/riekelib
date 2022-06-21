@@ -89,6 +89,7 @@ ncells <- function(.data) {
 #' Call ggsave with default parameters
 #'
 #' @param filename File name to create on disk.
+#' @param plot Plot to save, defaults to last plot displayed.
 #' @param width,height,units Plot size in `units` ("in", "cm", "mm", or "px").
 #' @param dpi Plot resolution. Also accepts a string input: "retina" (320), "print" (300), or "screen" (72).
 #' @param device Device format (e.g., one of "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg", or "wmf")
@@ -106,6 +107,7 @@ ncells <- function(.data) {
 #' }
 #'
 ggquicksave <- function(filename,
+                        plot = ggplot2::last_plot(),
                         width = 9,
                         height = 6,
                         units = "in",
@@ -115,6 +117,7 @@ ggquicksave <- function(filename,
 
   ggplot2::ggsave(
     filename = filename,
+    plot = plot,
     width = width,
     height = height,
     units = units,
