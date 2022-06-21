@@ -2,6 +2,7 @@
 
 export(arrange_vector)
 export(beta_interval)
+export(color_text)
 export(cramer_v)
 export(expit)
 export(fetch_survey_named)

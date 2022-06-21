@@ -91,6 +91,7 @@ ncells <- function(.data) {
 #' @param filename File name to create on disk.
 #' @param width,height,units Plot size in `units` ("in", "cm", "mm", or "px").
 #' @param dpi Plot resolution. Also accepts a string input: "retina" (320), "print" (300), or "screen" (72).
+#' @param device Device format (e.g., one of "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg", or "wmf")
 #' @param ... Other arguments passed to `ggplot2::ggsave()`.
 #'
 #' @export
@@ -109,6 +110,7 @@ ggquicksave <- function(filename,
                         height = 6,
                         units = "in",
                         dpi = 500,
+                        device = "png",
                         ...) {
 
   ggplot2::ggsave(
@@ -117,6 +119,7 @@ ggquicksave <- function(filename,
     height = height,
     units = units,
     dpi = dpi,
+    device = device,
     ...
   )
 
@@ -130,6 +133,8 @@ ggquicksave <- function(filename,
 #' @param hex_color_code color to be applied to the text
 #'
 #' @export
+#'
+#' @examples
 #' \dontrun{
 #' color_text("Hello there!", "#BD43BF")
 #' }
