@@ -4,7 +4,15 @@
 \alias{ggquicksave}
 \title{Call ggsave with default parameters}
 \usage{
-ggquicksave(filename, width = 9, height = 6, units = "in", dpi = 500, ...)
+ggquicksave(
+  filename,
+  width = 9,
+  height = 6,
+  units = "in",
+  dpi = 500,
+  device = "png",
+  ...
+)
 }
 \arguments{
 \item{filename}{File name to create on disk.}
@@ -12,6 +20,8 @@ ggquicksave(filename, width = 9, height = 6, units = "in", dpi = 500, ...)
 \item{width, height, units}{Plot size in \code{units} ("in", "cm", "mm", or "px").}
 
 \item{dpi}{Plot resolution. Also accepts a string input: "retina" (320), "print" (300), or "screen" (72).}
+
+\item{device}{Device format (e.g., one of "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg", or "wmf")}
 
 \item{...}{Other arguments passed to \code{ggplot2::ggsave()}.}
 }
