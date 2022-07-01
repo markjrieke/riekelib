@@ -5,7 +5,6 @@
 #'
 #' @export
 #'
-#' @importFrom gtools rdirichlet
 #' @examples
 #' \dontrun{
 #' # generate 10000 nps scores based on a sample of 100 respondents
@@ -16,7 +15,7 @@ rnps <- function(n,
                  passives,
                  detractors) {
 
-  nps <- gtools::rdirichlet(n, c(promoters, passives, detractors))
+  nps <- rdirichlet(n, c(promoters, passives, detractors))
   nps <- nps[, 1] - nps[, 3]
 
   return(nps)
@@ -75,4 +74,7 @@ qnps <- function(probs = c(0, 0.25, 0.5, 0.75, 1),
 
 # nps_interval - add l8r dawg
 
+### ALSO ###
+# think about adding a section for dirichlet
+# since gtools has been orphaned
 
