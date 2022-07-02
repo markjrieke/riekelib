@@ -1,5 +1,5 @@
 
-# riekelib
+# riekelib <img src="man/figures/logo.png" align="right" width="120" />
 
 **Author:** [Mark Rieke](https://www.thedatadiary.net/about/)
 **License:**
