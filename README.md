@@ -27,7 +27,7 @@ devtools::install_github("https://github.com/markjrieke/riekelib")
 
 ## Usage
 
-There are currently four function groups in this package:
+There are currently a few function groups in this package:
 
 1.  `stats_extensions.R` contains functions that provide an interface to
     the `stats` package; namely, adding confidence intervals to common
