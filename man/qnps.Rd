@@ -5,7 +5,7 @@
 \title{Produce simulated sample quantiles of NPS}
 \usage{
 qnps(
-  probs = c(0, 0.25, 0.5, 0.75, 1),
+  p,
   promoters,
   passives,
   detractors,
@@ -16,7 +16,7 @@ qnps(
 )
 }
 \arguments{
-\item{probs}{numeric vector of probabilities with values in \verb{[0, 1]}.}
+\item{p}{numeric vector of probabilities with values in \verb{[0, 1]}.}
 
 \item{promoters, passives, detractors}{counts of promoters, passives, and detractors}
 
