@@ -28,7 +28,7 @@ rnps <- function(n,
 #' `qnps()` simulates a sample of NPS scores, then produces sample quantiles
 #'   corresponding to the given probabilities.
 #'
-#' @param probs numeric vector of probabilities with values in `[0, 1]`.
+#' @param p numeric vector of probabilities with values in `[0, 1]`.
 #' @param promoters,passives,detractors counts of promoters, passives, and detractors
 #' @param sims number of simulated NPS scores to generate and use in the sample
 #'   quantile calculation.
@@ -46,13 +46,13 @@ rnps <- function(n,
 #' # estimate the 95% nps quantile range of a sample of 100 respondents
 #' qnps(c(0.025, 0.5, 0.975), 70, 20, 10)
 #' }
-qnps <- function(probs = c(0, 0.25, 0.5, 0.75, 1),
+qnps <- function(p,
                  promoters,
                  passives,
                  detractors,
                  sims = 10000,
                  na.rm = FALSE,
-                 names = TRUE,
+                 names = FALSE,
                  ...) {
 
   # simulate scores
@@ -62,7 +62,7 @@ qnps <- function(probs = c(0, 0.25, 0.5, 0.75, 1),
   nps <-
     stats::quantile(
       nps,
-      probs = probs,
+      probs = p,
       names = names,
       na.rm = na.rm,
       ...
