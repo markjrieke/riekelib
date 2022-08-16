@@ -1,4 +1,9 @@
-#' Random generation of NPS based on counts of promoters, passives, and detractors
+#' Net Promoter Score (NPS) Statistical Tools
+#'
+#' @description
+#' Density, distribution function, quantile function, and random generation of
+#' Net Promoter Scores (NPS) defined by counts of `promoters`, `passives`, and
+#' `detractors`.
 #'
 #' @param n number of observations to generate
 #' @param promoters,passives,detractors counts of promoters, passives, and detractors
@@ -71,6 +76,72 @@ qnps <- function(p,
   return(nps)
 
 }
+
+########################## IN PROGRESS #########################################
+
+#' @export
+pnps <- function(q,
+                 promoters,
+                 passives,
+                 detractors,
+                 sims = 10000,
+                 significant_digits = 3) {
+
+  # set vector length based on significant digits desired
+  len <- 10^significant_digits
+
+  # quantile vector - p-value is the index of the vector
+  nps <- qnps(seq(0, 1, length.out = len), promoters, passives, detractors, sims = sims)
+
+  # filter based on specified quantile
+  nps <- nps[nps <= q]
+
+  # return the length as the p-value
+  p <- length(nps)/len
+
+  return(p)
+
+}
+
+#' @export
+dnps <- function(x,
+                 promoters,
+                 passives,
+                 detractors,
+                 sims = 10000,
+                 significant_digits = 3) {
+
+  # set vector length based on significant digits desired
+  len <- 10^significant_digits
+
+  # quantile vector - p-value is the index of the vector
+  nps <- qnps(seq(0, 1, length.out = len), promoters, passives, detractors, sims = sims)
+
+  # params for calculating derivative
+  delta_p <- 1/len
+  idx <- length(nps[nps <= x])
+
+  # return dev
+  if (idx == len) {
+
+    d <- delta_p/(nps[idx] - nps[idx - 1])
+
+  } else if (idx == 0) {
+
+    d <- delta_p/(nps[2] - nps[1])
+
+  } else {
+
+    d <- delta_p/(nps[idx + 1] - nps[idx])
+
+  }
+
+  return(d)
+
+}
+
+# -----------------------------------internal-----------------------------------
+
 
 # nps_interval - add l8r dawg
 
