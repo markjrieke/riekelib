@@ -12,7 +12,9 @@ fetch_survey_named(survey_name, ...)
 \item{...}{Additional arguments to be passed to \code{qualtRics::fetch_survey()}}
 }
 \description{
-Fetch a Qualtrics survey by name via the Qualtrics API
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+This has been replaced in favor of the more flexible \code{\link[=fetch_surveys]{fetch_surveys()}}.
 }
 \examples{
 \dontrun{
