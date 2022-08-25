@@ -11,7 +11,7 @@ qnps(
   detractors,
   sims = 10000,
   na.rm = FALSE,
-  names = TRUE,
+  names = FALSE,
   ...
 )
 }
