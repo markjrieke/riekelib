@@ -68,15 +68,34 @@ fetch_survey_named <- function(survey_name, ...) {
 #' }
 fetch_surveys <- function(survey_names, ...) {
 
+  # define survey_names internally
+  ui_names <- survey_names
+
   # get args passed on to `fetch_survey()`
   dots <- dplyr::enquos(...)
 
   # get a list of survey ids
   surveys <- qualtRics::all_surveys()
-  surveys <- dplyr::filter(surveys, name %in% survey_names)
+  surveys <- dplyr::filter(surveys, name %in% ui_names)
+
+  # get list of survey_names that don't appear in ui
+  not_fetched <- survey_names[which(!survey_names %in% surveys$name)]
+
+  # stop if all surveys are missing or spelled incorrectly
+  if (nrow(surveys) == 0) cli::cli_abort("No surveys match values supplied to `survey_names`")
+
+  # warn if some are missing or spelled incorrectly
+  if (length(not_fetched) > 0) {
+
+    cli::cli_warn(
+      c("The following `survey_names` were not found in the Qualtrics UI and were skipped:",
+        setNames(not_fetched, rep("x", length(not_fetched))))
+    )
+
+  }
 
   # if only one survey name provided, just return the responses, else return a nested tibble
-  if (length(survey_names) == 1) {
+  if (nrow(surveys) == 1) {
 
     id <- dplyr::pull(surveys, id)
     surveys <- qualtRics::fetch_survey(id, ...)
@@ -88,5 +107,7 @@ fetch_surveys <- function(survey_names, ...) {
 
   }
 
+
   return(surveys)
+
 }
