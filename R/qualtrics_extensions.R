@@ -1,40 +1,3 @@
-#' Fetch a Qualtrics survey by name via the Qualtrics API
-#'
-#' @description
-#' `r lifecycle::badge("deprecated")`
-#'
-#' This has been replaced in favor of the more flexible [fetch_surveys()].
-#'
-#' @param survey_name Survey name as it appears in the Qualtrics UI
-#' @param ... Additional arguments to be passed to `qualtRics::fetch_survey()`
-#'
-#' @export
-#'
-#' @importFrom qualtRics all_surveys
-#' @importFrom qualtRics fetch_id
-#' @importFrom qualtRics fetch_survey
-#'
-#' @examples
-#' \dontrun{
-#' # fetch all survey responses
-#' mysurvey <- fetch_survey_named("my survey name")
-#'
-#' # fetch survey based on return date
-#' mysurvey <- fetch_survey_named("my survey name", start_date = "2021-07-01", end_date = "2021-07-30")
-#' }
-#'
-fetch_survey_named <- function(survey_name, ...) {
-
-  lifecycle::deprecate_warn("8/25/22", "fetch_survey_named()", "fetch_surveys()")
-
-  survey <- qualtRics::all_surveys()
-  survey <- qualtRics::fetch_id(survey, survey_name)
-  survey <- qualtRics::fetch_survey(survey, ...)
-
-  return(survey)
-
-}
-
 #' Fetch a list of Qualtrics surveys by name via the Qualtrics API
 #'
 #' @return
@@ -106,7 +69,6 @@ fetch_surveys <- function(survey_names, ...) {
     surveys <- dplyr::mutate(surveys, responses = purrr::map(survey_id, ~qualtRics::fetch_survey(.x, !!!dots)))
 
   }
-
 
   return(surveys)
 
