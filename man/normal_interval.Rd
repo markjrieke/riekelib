@@ -20,7 +20,6 @@ the data frame.}
 Apply a confidence interval to values in a dataframe based on the normal distribution.
 }
 \examples{
-\dontrun{
 # create example df
 mean <- rnorm(10, 100, 20)
 std_dev <- rnorm(10, 80, 10)
@@ -32,7 +31,9 @@ normal_interval(example, mean, std_dev)
 
 # apply a custom confidence interval
 normal_interval(example, mean, std_dev, conf = 0.99)
-
 }
-
+\seealso{
+Other interval verbs: 
+\code{\link{beta_interval}()}
 }
+\concept{interval verbs}

@@ -11,7 +11,8 @@ Description: A collection of functions for personal/professional use, not super
              functions (or groups of functions) may be formalized in their own 
              succinct packages.
 License: MIT + file LICENSE
-URL: https://github.com/markjrieke/riekelib
+URL: https://github.com/markjrieke/riekelib,
+    https://markjrieke.github.io/riekelib/
 BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
   dplyr,

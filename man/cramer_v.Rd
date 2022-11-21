@@ -17,7 +17,5 @@ cramer_v(chi_sq, n, deg_free)
 Calculate the effect size for a Chi-Square test using the Cramer's V measure
 }
 \examples{
-\dontrun{
 cramer_v(33.2, 125, 4)
-}
 }

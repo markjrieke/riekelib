@@ -1,0 +1,29 @@
+url: https://markjrieke.github.io/riekelib/
+template:
+  bootstrap: 5
+
+reference:
+- title: Math and stats extensions
+  contents:
+  - logit
+  - expit
+  - ddirichlet
+  - rdirichlet
+  - beta_interval
+  - normal_interval
+  - pct_diff
+  - cramer_v
+
+- title: tidyverse extensions
+  contents:
+  - arrange_vector
+  - percent
+  - ncells
+  - ggquicksave
+  - color_text
+
+- title: Qualtrics extensions
+  contents:
+  - fetch_surveys
+  - rnps
+  - qnps
