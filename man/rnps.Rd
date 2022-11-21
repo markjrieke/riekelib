@@ -2,21 +2,50 @@
 % Please edit documentation in R/nps.R
 \name{rnps}
 \alias{rnps}
-\title{Random generation of NPS based on counts of promoters, passives, and detractors}
+\alias{qnps}
+\title{Net Promoter Score (NPS)}
 \usage{
 rnps(n, promoters, passives, detractors)
+
+qnps(
+  p,
+  promoters,
+  passives,
+  detractors,
+  sims = 10000,
+  na.rm = FALSE,
+  names = FALSE,
+  ...
+)
 }
 \arguments{
-\item{n}{number of observations to generate}
+\item{n}{number of observations to generate.}
 
 \item{promoters, passives, detractors}{counts of promoters, passives, and detractors}
+
+\item{p}{vector of quantiles.}
+
+\item{sims}{number of simulated NPS scores to generate and use in the sample
+quantile calculation.}
+
+\item{na.rm}{logical; if true, any \code{NA} and \code{NaN}s are removed before the
+quantiles are computed.}
+
+\item{names}{logical; if true, the result has a \code{names} attribute. Set to
+\code{FALSE} to speedup with many \code{probs}.}
+
+\item{...}{additional params to pass to \code{stats::quantile()}}
 }
 \description{
-Random generation of NPS based on counts of promoters, passives, and detractors
+\code{rnps()} generates \code{n} random possible net promoter scores based on a sample
+of promoter, passive, and detractor responses.
+\code{qnps()} simulates a sample of NPS scores, then produces sample quantiles
+corresponding to the given probabilities.
 }
 \examples{
-\dontrun{
-# generate 10000 nps scores based on a sample of 100 respondents
-rnps(10000, 70, 20, 10)
-}
+# generate 10 nps scores based on a sample of 100 respondents
+rnps(10, 70, 20, 10)
+
+# estimate the 95\% nps quantile range of a sample of 100 respondents
+qnps(c(0.025, 0.5, 0.975), 70, 20, 10)
 }

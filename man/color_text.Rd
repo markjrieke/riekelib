@@ -15,7 +15,5 @@ color_text(text, hex_color_code)
 Useful in conjuction with ggtext and glue
 }
 \examples{
-\dontrun{
 color_text("Hello there!", "#BD43BF")
-}
 }

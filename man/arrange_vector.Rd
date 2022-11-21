@@ -15,7 +15,6 @@ arrange_vector(x, desc = FALSE)
 Sort a vector by alphabetic or numeric order
 }
 \examples{
-\dontrun{
 # create a character vector
 myvec <- c("dog", "cat", "bird")
 
@@ -24,7 +23,4 @@ arrange_vector(myvec)
 
 # can also arrange in reverse order
 arrange_vector(myvec, desc = TRUE)
-
-}
-
 }

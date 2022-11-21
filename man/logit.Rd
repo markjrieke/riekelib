@@ -2,30 +2,32 @@
 % Please edit documentation in R/bound_transforms.R
 \name{logit}
 \alias{logit}
-\title{Transform a value on a bound scale to an unbounded scale}
+\alias{expit}
+\title{Transform a between bound and unbounded scales.}
 \usage{
 logit(x, lower_bound = 0, upper_bound = 1, base = exp(1))
+
+expit(x, lower_bound = 0, upper_bound = 1, base = exp(1))
 }
 \arguments{
-\item{x}{Bound value to be transformed}
+\item{x}{Value to be rescaled.}
 
 \item{lower_bound}{Lower bound of x; defaults to 0.}
 
 \item{upper_bound}{Upper bound of x; defaults to 1.}
 
-\item{base}{Base used for log-transform, defaults to exp(1) = e}
+\item{base}{Base used for log-transform, defaults to \code{exp(1)} = e}
 }
 \description{
-Transform a value on a bound scale to an unbounded scale
+Transform a between bound and unbounded scales.
 }
 \details{
-Transform a value on a bound scale to an unbound scale, i.e.,
-\verb{[-Inf, Inf]}. Values at the lower/upper bounds will return \code{-Inf}/\code{Inf}.
-Uses the natural base, \code{e}, by default, but other bases can be passed to
-the parameter \code{base}.
+\code{logit()} will transform a value on a bound scale to an unbound scale,
+while \code{expit()} performs the reverse transformation. Values at the lower/upper
+bounds correspond to \code{-Inf}/\code{Inf} on the unbounded scale. Uses the natural base,
+\code{e}, by default, but other bases can be passed to the parameter \code{base}.
 }
 \examples{
-\dontrun{
 # unbound vector of values bound between [0, 1]
 myvec <- seq(0, 10, 1)/10
 logit(myvec)
@@ -33,5 +35,11 @@ logit(myvec)
 # unbound vector of values between [100, 200]
 myvec <- seq(100, 200, 10)
 logit(myvec, lower_bound = 100, upper_bound = 200)
-}
+
+# bound vector of unbounded values to [0, 1]
+myvec <- rnorm(10)
+expit(myvec)
+
+# bound vector of unbounded values to [100, 200]
+expit(myvec, lower_bound = 100, upper_bound = 200)
 }
