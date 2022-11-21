@@ -13,7 +13,5 @@ pct_diff(x, y)
 Calculate the percent difference between two values
 }
 \examples{
-\dontrun{
 pct_diff(182, 195)
-}
 }

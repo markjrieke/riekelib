@@ -6,12 +6,13 @@
 #' @param beta Second shape parameter of the beta distribution, must be greater than 0
 #' @param conf Confidence interval, must be between `[0, 1]`. Defaults to 0.95.
 #'
+#' @family interval verbs
+#'
 #' @export
 #'
 #' @importFrom dplyr mutate
 #'
 #' @examples
-#' \dontrun{
 #' # create example df
 #' alpha <- rnorm(10, 100, 20)
 #' beta <- rnorm(10, 80, 10)
@@ -23,9 +24,6 @@
 #'
 #' # apply a custom confidence interval
 #' beta_interval(example, alpha, beta, conf = 0.99)
-#'
-#' }
-#'
 beta_interval <- function(.data, alpha, beta, conf = 0.95) {
 
   dplyr::mutate(
@@ -42,6 +40,8 @@ beta_interval <- function(.data, alpha, beta, conf = 0.95) {
 #' @param beta Second shape parameter of the beta distribution, must be greater than 0
 #' @param conf Confidence interval, must be between `[0, 1]`.
 #'
+#' @noRd
+#'
 #' @importFrom stats qbeta
 #'
 beta_lower <- function(alpha, beta, conf) {
@@ -55,6 +55,8 @@ beta_lower <- function(alpha, beta, conf) {
 #' @param alpha First shape parameter of the beta distribution, must be greater than 0
 #' @param beta Second shape parameter of the beta distribution, must be greater than 0
 #' @param conf Confidence interval, must be between `[0, 1]`.
+#'
+#' @noRd
 #'
 #' @importFrom stats qbeta
 #'
@@ -72,12 +74,13 @@ beta_upper <- function(alpha, beta, conf) {
 #' @param std_dev Standard deviation of the distribution
 #' @param conf Confidence interval, must be between `[0, 1]`. Defaults to 0.95.
 #'
+#' @family interval verbs
+#'
 #' @export
 #'
 #' @importFrom dplyr mutate
 #'
 #' @examples
-#' \dontrun{
 #' # create example df
 #' mean <- rnorm(10, 100, 20)
 #' std_dev <- rnorm(10, 80, 10)
@@ -89,9 +92,6 @@ beta_upper <- function(alpha, beta, conf) {
 #'
 #' # apply a custom confidence interval
 #' normal_interval(example, mean, std_dev, conf = 0.99)
-#'
-#' }
-#'
 normal_interval <- function(.data, mean, std_dev, conf = 0.95) {
 
   dplyr::mutate(
@@ -108,6 +108,8 @@ normal_interval <- function(.data, mean, std_dev, conf = 0.95) {
 #' @param std_dev Standard deviation of the distribution
 #' @param conf Confidence interval, must be between `[0, 1]`
 #'
+#' @noRd
+#'
 #' @importFrom stats qnorm
 #'
 normal_lower <- function(mean, std_dev, conf) {
@@ -121,6 +123,8 @@ normal_lower <- function(mean, std_dev, conf) {
 #' @param mean Mean of the distribution
 #' @param std_dev Standard deviation of the distribution
 #' @param conf Confidence interval, must be between `[0, 1]`
+#'
+#' @noRd
 #'
 #' @importFrom stats qnorm
 #'
@@ -138,9 +142,7 @@ normal_upper <- function(mean, std_dev, conf) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' pct_diff(182, 195)
-#' }
 pct_diff <- function(x, y) {
 
   abs(x - y)/mean(c(x, y))
@@ -157,9 +159,7 @@ pct_diff <- function(x, y) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' cramer_v(33.2, 125, 4)
-#' }
 cramer_v <- function(chi_sq, n, deg_free) {
 
   sqrt(chi_sq/(n * deg_free))
