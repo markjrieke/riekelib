@@ -11,7 +11,6 @@
 #' @importFrom dplyr pull
 #'
 #' @examples
-#' \dontrun{
 #' # create a character vector
 #' myvec <- c("dog", "cat", "bird")
 #'
@@ -20,9 +19,6 @@
 #'
 #' # can also arrange in reverse order
 #' arrange_vector(myvec, desc = TRUE)
-#'
-#' }
-#'
 arrange_vector <- function(x, desc = FALSE) {
 
   vector <- tibble::as_tibble(x)
@@ -52,10 +48,8 @@ arrange_vector <- function(x, desc = FALSE) {
 #' @importFrom dplyr select
 #'
 #' @examples
-#' \dontrun{
 #' # return a tibble of the percentage of gear type in the `mtcars` dataset
 #' percent(mtcars, gear)
-#' }
 percent <- function(.data, ..., .keep_n = FALSE) {
 
   df <- dplyr::count(.data, ...)
@@ -76,10 +70,8 @@ percent <- function(.data, ..., .keep_n = FALSE) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' # return the number of cells in the `iris` dataset
 #' cells(iris)
-#' }
 ncells <- function(.data) {
 
   nrow(.data) * ncol(.data)
@@ -105,7 +97,6 @@ ncells <- function(.data) {
 #'
 #' ggquicksave("mtcars.png")
 #' }
-#'
 ggquicksave <- function(filename,
                         plot = ggplot2::last_plot(),
                         width = 9,
@@ -138,9 +129,7 @@ ggquicksave <- function(filename,
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' color_text("Hello there!", "#BD43BF")
-#' }
 color_text <- function(text, hex_color_code) {
 
   paste0(

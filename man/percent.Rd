@@ -17,8 +17,6 @@ percent(.data, ..., .keep_n = FALSE)
 Return the percentage each value or combination of values appear in a tibble or dataframe
 }
 \examples{
-\dontrun{
 # return a tibble of the percentage of gear type in the `mtcars` dataset
 percent(mtcars, gear)
-}
 }

@@ -39,5 +39,4 @@ ggplot(mtcars, aes(mpg, wt)) +
 
 ggquicksave("mtcars.png")
 }
-
 }
