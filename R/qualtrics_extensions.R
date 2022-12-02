@@ -29,7 +29,7 @@
 #' # fetch multiple surveys by name
 #' my_surveys <- fetch_surveys(c("my cool survey", "my lame survey"))
 #' }
-fetch_surveys <- function(survey_names, ...) {
+fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 
   # define survey_names internally
   ui_names <- survey_names
@@ -61,12 +61,12 @@ fetch_surveys <- function(survey_names, ...) {
   if (nrow(surveys) == 1) {
 
     id <- dplyr::pull(surveys, id)
-    surveys <- qualtRics::fetch_survey(id, ...)
+    surveys <- qualtRics::fetch_survey(id, ..., time_zone = time_zone)
 
   } else {
 
     surveys <- dplyr::select(surveys, survey_name = name, survey_id = id)
-    surveys <- dplyr::mutate(surveys, responses = purrr::map(survey_id, ~qualtRics::fetch_survey(.x, !!!dots)))
+    surveys <- dplyr::mutate(surveys, responses = purrr::map(survey_id, ~qualtRics::fetch_survey(.x, !!!dots, time_zone = time_zone)))
 
   }
 
