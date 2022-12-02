@@ -4,7 +4,7 @@
 \alias{fetch_surveys}
 \title{Fetch a list of Qualtrics surveys by name via the Qualtrics API}
 \usage{
-fetch_surveys(survey_names, ...)
+fetch_surveys(survey_names, ..., time_zone = "America/Chicago")
 }
 \arguments{
 \item{survey_names}{A vector of survey names as they appear in the Qualtrics UI.}
