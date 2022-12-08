@@ -133,7 +133,7 @@ ggquicksave <- function(filename,
 color_text <- function(text, hex_color_code) {
 
   paste0(
-    "<span style=color:'",
+    "<span style='color:",
     hex_color_code,
     "'>",
     text,
