@@ -73,3 +73,55 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
   return(surveys)
 
 }
+
+#' Reformat Memorial Hermann Survey Names
+#'
+#' @description
+#' Convenience function for reformatting MH Survey names as they appear in the
+#' Qualtrics UI to something more legible.
+#'
+#' @param .data A tibble or dataframe containing survey names.
+#' @param survey_names The name of the column in `.data` containing survey names.
+#'
+#' @export
+#'
+#' @examples
+#' # list of survey names as they appear in the qualtrics ui
+#' surveys <-
+#'   tibble::tibble(
+#'     names = c("Live - Adult Day Surgery",
+#'               "Live - Adult Emergency Department",
+#'               "Live - Adult Inpatient Rehab",
+#'               "Live - Adult Medical Practice",
+#'               "Live - Adult Outpatient",
+#'               "Live - Adult Outpatient - Oncology",
+#'               "Live - Adult Outpatient - Vaccine",
+#'               "Live - Adult Outpatient Rehab",
+#'               "Live - Adult Telemedicine",
+#'               "Live - Adult Urgent Care",
+#'               "Live - HCAHPS - Paper",
+#'               "Live - Home Medical Equipment",
+#'               "Live - Infusion Pharmacy",
+#'               "Live - Inpatient",
+#'               "Live - Pediatric - Emergency Department",
+#'               "Live - Pediatric Inpatient")
+#'   )
+#'
+#' # bad names!
+#' surveys
+#'
+#' # better names!
+#' fix_survey_names(surveys, names)
+fix_survey_names <- function(.data, survey_names) {
+
+  dplyr::mutate(
+      .data,
+      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "Live - "),
+      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "Adult "),
+      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "- "),
+      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, " Department"),
+      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, " Paper"),
+      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "atric")
+    )
+
+}
