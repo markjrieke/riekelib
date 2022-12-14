@@ -10,6 +10,10 @@ fetch_surveys(survey_names, ..., time_zone = "America/Chicago")
 \item{survey_names}{A vector of survey names as they appear in the Qualtrics UI.}
 
 \item{...}{Additional arguments to be passed to \code{qualtRics::fetch_survey()}.}
+
+\item{time_zone}{Timezone adjustment to be passed to \code{qualtRics::fetch_survey()}.
+A list of acceptable names for \code{time_zone} can be found in the
+\href{https://api.qualtrics.com/7367ea545f562-dates-and-times}{Qualtrics API documentation}.}
 }
 \value{
 For a single value supplied to \code{survey_names}: a tibble of the survey

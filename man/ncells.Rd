@@ -14,5 +14,5 @@ Determine the number of \code{cells} in a tibble or dataframe
 }
 \examples{
 # return the number of cells in the `iris` dataset
-cells(iris)
+ncells(iris)
 }

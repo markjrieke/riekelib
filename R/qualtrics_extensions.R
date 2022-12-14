@@ -9,12 +9,18 @@
 #'
 #' @param survey_names A vector of survey names as they appear in the Qualtrics UI.
 #' @param ... Additional arguments to be passed to `qualtRics::fetch_survey()`.
+#' @param time_zone Timezone adjustment to be passed to `qualtRics::fetch_survey()`.
+#'   A list of acceptable names for `time_zone` can be found in the
+#'   [Qualtrics API documentation](https://api.qualtrics.com/7367ea545f562-dates-and-times).
 #'
 #' @export
 #'
 #' @importFrom dplyr enquos
 #' @importFrom qualtRics all_surveys
 #' @importFrom dplyr filter
+#' @importFrom cli cli_abort
+#' @importFrom cli cli_warn
+#' @importFrom stats setNames
 #' @importFrom dplyr pull
 #' @importFrom qualtRics fetch_survey
 #' @importFrom dplyr select
@@ -52,7 +58,7 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 
     cli::cli_warn(
       c("The following `survey_names` were not found in the Qualtrics UI and were skipped:",
-        setNames(not_fetched, rep("x", length(not_fetched))))
+        stats::setNames(not_fetched, rep("x", length(not_fetched))))
     )
 
   }
@@ -84,6 +90,10 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 #' @param survey_names The name of the column in `.data` containing survey names.
 #'
 #' @export
+#'
+#' @importFrom dplyr mutate
+#' @importFrom stringr str_remove
+#' @importFrom rlang :=
 #'
 #' @examples
 #' # list of survey names as they appear in the qualtrics ui
