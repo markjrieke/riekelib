@@ -17,6 +17,7 @@ BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
   dplyr,
   ggplot2,
+  purrr,
   qualtRics,
   stats,
   tibble
