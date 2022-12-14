@@ -71,7 +71,7 @@ percent <- function(.data, ..., .keep_n = FALSE) {
 #'
 #' @examples
 #' # return the number of cells in the `iris` dataset
-#' cells(iris)
+#' ncells(iris)
 ncells <- function(.data) {
 
   nrow(.data) * ncol(.data)
