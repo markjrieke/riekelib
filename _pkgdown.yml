@@ -25,5 +25,6 @@ reference:
 - title: Qualtrics extensions
   contents:
   - fetch_surveys
+  - fix_survey_names
   - rnps
   - qnps
