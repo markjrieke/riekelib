@@ -86,52 +86,145 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 #' Convenience function for reformatting MH Survey names as they appear in the
 #' Qualtrics UI to something more legible.
 #'
-#' @param .data A tibble or dataframe containing survey names.
-#' @param survey_names The name of the column in `.data` containing survey names.
+#' @param .data A tibble returned by `fetch_surveys()`. The column `survey_id`
+#' may be removed but both `survey_name` and `responses` must be present.
 #'
 #' @export
 #'
-#' @importFrom dplyr mutate
+#' @importFrom cli cli_abort
 #' @importFrom stringr str_remove
-#' @importFrom rlang :=
 #'
 #' @examples
 #' # list of survey names as they appear in the qualtrics ui
 #' surveys <-
 #'   tibble::tibble(
-#'     names = c("Live - Adult Day Surgery",
-#'               "Live - Adult Emergency Department",
-#'               "Live - Adult Inpatient Rehab",
-#'               "Live - Adult Medical Practice",
-#'               "Live - Adult Outpatient",
-#'               "Live - Adult Outpatient - Oncology",
-#'               "Live - Adult Outpatient - Vaccine",
-#'               "Live - Adult Outpatient Rehab",
-#'               "Live - Adult Telemedicine",
-#'               "Live - Adult Urgent Care",
-#'               "Live - HCAHPS - Paper",
-#'               "Live - Home Medical Equipment",
-#'               "Live - Infusion Pharmacy",
-#'               "Live - Inpatient",
-#'               "Live - Pediatric - Emergency Department",
-#'               "Live - Pediatric Inpatient")
+#'     survey_name = c("Live - Adult Day Surgery",
+#'                     "Live - Adult Emergency Department",
+#'                     "Live - Adult Inpatient Rehab",
+#'                     "Live - Adult Medical Practice",
+#'                     "Live - Adult Outpatient",
+#'                     "Live - Adult Outpatient - Oncology",
+#'                     "Live - Adult Outpatient - Vaccine",
+#'                     "Live - Adult Outpatient Rehab",
+#'                     "Live - Adult Telemedicine",
+#'                     "Live - Adult Urgent Care",
+#'                     "Live - HCAHPS - Paper",
+#'                     "Live - Home Medical Equipment",
+#'                     "Live - Infusion Pharmacy",
+#'                     "Live - Inpatient",
+#'                     "Live - Pediatric - Emergency Department",
+#'                     "Live - Pediatric Inpatient")
 #'   )
 #'
 #' # bad names!
 #' surveys
 #'
 #' # better names!
-#' fix_survey_names(surveys, names)
-fix_survey_names <- function(.data, survey_names) {
+#' fix_survey_names(surveys)
+fix_survey_names <- function(.data) {
+
+  # check for correct col
+  if (!"survey_name" %in% names(.data)) {
+
+    cli::cli_abort("Missing needed col: `survey_name`")
+
+  }
 
   dplyr::mutate(
       .data,
-      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "Live - "),
-      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "Adult "),
-      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "- "),
-      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, " Department"),
-      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, " Paper"),
-      "{{survey_names}}" := stringr::str_remove({{ survey_names }}, "atric")
+      survey_name = stringr::str_remove(survey_name, "Live - "),
+      survey_name = stringr::str_remove(survey_name, "Adult "),
+      survey_name = stringr::str_remove(survey_name, "- "),
+      survey_name = stringr::str_remove(survey_name, " Department"),
+      survey_name = stringr::str_remove(survey_name, " Paper"),
+      survey_name = stringr::str_remove(survey_name, "atric")
     )
+
+}
+
+#' Remove duplicate responses from the Inpatient survey
+#'
+#' @description
+#' Due to Qualtrics' HCAHPs sampling engine, Memorial Hermann's Inpatient survey
+#' is a master file containing responses for Inpatient, Pedi Inpatient, and
+#' Inpatient Rehab (Inpatient Rehab was separated out to its own standing survey
+#' in early 2022, but historical responses are duplicated across both the
+#' Inpatient and Inpatient Rehab survey files). `deduplicate_ip()` takes in a
+#' tibble from `fetch_surveys()` and removes duplicated responses from the
+#' Inpatient file, using the encounter ID (`"UNIQUE_ID"`) as the key.
+#'
+#' @inheritParams fix_survey_names
+#'
+#' @export
+#'
+#' @importFrom cli cli_abort
+#' @importFrom stringr str_detect
+#' @importFrom cli cli_alert_info
+#' @importFrom dplyr filter
+#' @importFrom tidyr unnest
+#' @importFrom nplyr nest_anti_join
+#' @importFrom dplyr bind_rows
+#'
+#' @examples
+#' \dontrun{
+#' # pull in surveys from Qualtrics
+#' surveys <-
+#'   c("Live - Inpatient",
+#'     "Live - Pediatric Inpatient",
+#'     "Live - Inpatient Rehab")
+#'
+#' surveys <- fetch_surveys(surveys)
+#'
+#' # deduplicate records
+#' deduplicate_ip(surveys)
+#' }
+deduplicate_ip <- function(.data) {
+
+  # check format
+  df_names <- names(.data)
+  if (!"survey_name" %in% df_names | !"responses" %in% df_names) {
+
+    cli::cli_abort("Missing one of needed cols: `survey_name` or `responses`")
+
+  }
+
+  # check if fix_survey_names() has been called already
+  if (stringr::str_detect(.data$survey_name[1], "Live")) {
+
+    cli::cli_alert_info("Calling `fix_survey_names()`")
+    surveys <- fix_survey_names(.data)
+
+  } else {
+
+    surveys <- .data
+
+  }
+
+  # check that all three surveys are present
+  ip_names <- dplyr::filter(surveys, stringr::str_detect(survey_name, "Inpatient"))$survey_name
+  if (length(ip_names) != 3) {
+
+    cli::cli_abort("Missing one of needed surveys: Inpatient, Pedi Inpatient, or Inpatient Rehab")
+
+  }
+
+  # separate out surveys
+  ip <- dplyr::filter(surveys, survey_name == "Inpatient")
+  pip <- dplyr::filter(surveys, survey_name == "Pedi Inpatient")
+  ipr <- dplyr::filter(surveys, survey_name == "Inpatient Rehab")
+
+  # unnest pip/ipr to be able to anti join later
+  pip <- tidyr::unnest(pip, responses)
+  ipr <- tidyr::unnest(ipr, responses)
+
+  # remove pip/ipr records from ip
+  ip <- nplyr::nest_anti_join(ip, responses, pip, by = "UNIQUE_ID")
+  ip <- nplyr::nest_anti_join(ip, responses, ipr, by = "UNIQUE_ID")
+
+  # rejoin ip back to the survey frame
+  surveys <- dplyr::filter(surveys, survey_name != "Inpatient")
+  surveys <- dplyr::bind_rows(surveys, ip)
+
+  return(surveys)
 
 }
