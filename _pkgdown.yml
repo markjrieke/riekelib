@@ -26,5 +26,6 @@ reference:
   contents:
   - fetch_surveys
   - fix_survey_names
+  - deduplicate_ip
   - rnps
   - qnps
