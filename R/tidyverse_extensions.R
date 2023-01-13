@@ -63,20 +63,6 @@ percent <- function(.data, ..., .keep_n = FALSE) {
 
 }
 
-#' Determine the number of `cells` in a tibble or dataframe
-#'
-#' @param .data a tibble or dataframe
-#'
-#' @export
-#'
-#' @examples
-#' # return the number of cells in the `iris` dataset
-#' ncells(iris)
-ncells <- function(.data) {
-
-  nrow(.data) * ncol(.data)
-
-}
 
 #' Call ggsave with default parameters
 #'
