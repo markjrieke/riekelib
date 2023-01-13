@@ -63,6 +63,42 @@ percent <- function(.data, ..., .keep_n = FALSE) {
 
 }
 
+#' Custom ggplot2 theme
+#'
+#' A custom ggplot2 theme based on my own personal preferences. This assumes the
+#' user (me) is on a windows machine & has Roboto Slab already installed.
+#'
+#' @param base_size base font size, given in pts
+#' @param base_family base font family
+#'
+#' @importFrom ggplot2 theme_minimal
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_rect
+#' @importFrom ggtext element_markdown
+#'
+#' @export
+#' @examples
+#' \dontrun{
+#' library(ggplot2)
+#' ggplot(mtcars, aes(mpg, wt)) +
+#'   geom_point() +
+#'   labs(title = "The title is left-aligned and allows for **bold** characters",
+#'        subtitle = "You can also use any markdown formatting, including *italics*",
+#'        caption = "Note the use of break<br>for line breaks")
+#' }
+theme_rieke <- function(base_size = 14, base_family = "Roboto Slab") {
+
+  ggplot2::theme_minimal(base_family = base_family,
+                         base_size = base_size) +
+    ggplot2::theme(plot.title.position = "plot",
+                   plot.background = ggplot2::element_rect(fill = "white", color = "white"),
+                   plot.title = ggtext::element_markdown(),
+                   plot.subtitle = ggtext::element_markdown(),
+                   plot.caption = ggtext::element_markdown(color = "gray40"))
+
+}
+
+
 
 #' Call ggsave with default parameters
 #'
