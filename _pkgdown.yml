@@ -14,6 +14,7 @@ reference:
   contents:
   - arrange_vector
   - percent
+  - theme_rieke
   - ggquicksave
   - color_text
 

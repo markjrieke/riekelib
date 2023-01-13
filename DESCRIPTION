@@ -18,6 +18,8 @@ Imports:
   cli,
   dplyr,
   ggplot2,
+  ggtext,
+  grDevices,
   gtools,
   nplyr,
   purrr,
