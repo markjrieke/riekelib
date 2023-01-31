@@ -53,3 +53,20 @@ expit <- function(x, lower_bound = 0, upper_bound = 1, base = exp(1)) {
 
 }
 
+#' Apply the softmax function to a vector of values.
+#'
+#' @param x Vector of values.
+#'
+#' @details Apply the softmax function to a vector of values, e.g.:
+#'
+#' \deqn{\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j = 1}^K \ e^{z_j}}}
+#'
+#' @export
+#'
+#' @examples
+#' softmax(seq(from = 0, to = 1, by = 0.25))
+softmax <- function(x) {
+
+  exp(x)/sum(exp(x))
+
+}
