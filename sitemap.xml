@@ -16,6 +16,9 @@
     <loc>https://markjrieke.github.io/riekelib/index.html</loc>
   </url>
   <url>
+    <loc>https://markjrieke.github.io/riekelib/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://markjrieke.github.io/riekelib/reference/arrange_vector.html</loc>
   </url>
   <url>
@@ -25,13 +28,7 @@
     <loc>https://markjrieke.github.io/riekelib/reference/color_text.html</loc>
   </url>
   <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/cramer_v.html</loc>
-  </url>
-  <url>
     <loc>https://markjrieke.github.io/riekelib/reference/deduplicate_ip.html</loc>
-  </url>
-  <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/dirichlet.html</loc>
   </url>
   <url>
     <loc>https://markjrieke.github.io/riekelib/reference/fetch_surveys.html</loc>
@@ -49,18 +46,18 @@
     <loc>https://markjrieke.github.io/riekelib/reference/logit.html</loc>
   </url>
   <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/ncells.html</loc>
-  </url>
-  <url>
     <loc>https://markjrieke.github.io/riekelib/reference/normal_interval.html</loc>
-  </url>
-  <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/pct_diff.html</loc>
   </url>
   <url>
     <loc>https://markjrieke.github.io/riekelib/reference/percent.html</loc>
   </url>
   <url>
     <loc>https://markjrieke.github.io/riekelib/reference/rnps.html</loc>
+  </url>
+  <url>
+    <loc>https://markjrieke.github.io/riekelib/reference/softmax.html</loc>
+  </url>
+  <url>
+    <loc>https://markjrieke.github.io/riekelib/reference/theme_rieke.html</loc>
   </url>
 </urlset>

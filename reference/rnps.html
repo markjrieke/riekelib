@@ -16,7 +16,7 @@ corresponding to the given probabilities."><meta property="og:image" content="ht
     
     <a class="navbar-brand me-2" href="../index.html">riekelib</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,9 @@ corresponding to the given probabilities."><meta property="og:image" content="ht
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
@@ -109,12 +112,12 @@ quantiles are computed.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># generate 10 nps scores based on a sample of 100 respondents</span></span></span>
 <span class="r-in"><span><span class="fu">rnps</span><span class="op">(</span><span class="fl">10</span>, <span class="fl">70</span>, <span class="fl">20</span>, <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.6116375 0.5855811 0.6024518 0.6603443 0.5733732 0.5909238 0.6576734</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.4743368 0.6440456 0.5214812</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.5786922 0.5831024 0.6260227 0.7138037 0.5357676 0.6394815 0.4627693</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.5915940 0.4476871 0.5641744</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># estimate the 95% nps quantile range of a sample of 100 respondents</span></span></span>
 <span class="r-in"><span><span class="fu">qnps</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span><span class="op">)</span>, <span class="fl">70</span>, <span class="fl">20</span>, <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4659410 0.6027509 0.7194940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4644173 0.6039686 0.7197116</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

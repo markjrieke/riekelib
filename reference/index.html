@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riekelib</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,9 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
@@ -58,9 +61,9 @@
         <dd>Transform a between bound and unbounded scales.</dd>
       </dl><dl><dt>
           
-          <code><a href="dirichlet.html">ddirichlet()</a></code> <code><a href="dirichlet.html">rdirichlet()</a></code> 
+          <code><a href="softmax.html">softmax()</a></code> 
         </dt>
-        <dd>Functions for the Dirichlet Distribution</dd>
+        <dd>Apply the softmax function to a vector of values.</dd>
       </dl><dl><dt>
           
           <code><a href="beta_interval.html">beta_interval()</a></code> 
@@ -71,16 +74,6 @@
           <code><a href="normal_interval.html">normal_interval()</a></code> 
         </dt>
         <dd>Apply a confidence interval to values in a dataframe based on the normal distribution.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="pct_diff.html">pct_diff()</a></code> 
-        </dt>
-        <dd>Calculate the percent difference between two values</dd>
-      </dl><dl><dt>
-          
-          <code><a href="cramer_v.html">cramer_v()</a></code> 
-        </dt>
-        <dd>Calculate the effect size for a Chi-Square test using the Cramer's V measure</dd>
       </dl></div><div class="section level2">
       <h2 id="tidyverse-extensions">tidyverse extensions<a class="anchor" aria-label="anchor" href="#tidyverse-extensions"></a></h2>
       
@@ -104,9 +97,9 @@
         <dd>Return the percentage each value or combination of values appear in a tibble or dataframe</dd>
       </dl><dl><dt>
           
-          <code><a href="ncells.html">ncells()</a></code> 
+          <code><a href="theme_rieke.html">theme_rieke()</a></code> 
         </dt>
-        <dd>Determine the number of <code>cells</code> in a tibble or dataframe</dd>
+        <dd>Custom ggplot2 theme</dd>
       </dl><dl><dt>
           
           <code><a href="ggquicksave.html">ggquicksave()</a></code> 
