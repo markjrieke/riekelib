@@ -1,4 +1,4 @@
-.onAttach <- function(libname, pkgname) {
+.onLoad <- function(libname, pkgname) {
 
   if (Sys.info()[1] == "Windows") {
 
