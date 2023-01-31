@@ -24,18 +24,3 @@ package:
 install.packages("devtools")
 devtools::install_github("https://github.com/markjrieke/riekelib")
 ```
-
-## Usage
-
-There are currently a few function groups in this package:
-
-1.  `stats_extensions.R` contains functions that provide an interface to
-    the `stats` package; namely, adding confidence intervals to common
-    distributions.
-2.  `bound_transforms.R` contains functions that rescale values on a
-    bound scale to an unbounded scale, and vice-versa.
-3.  `qualtrics_extensions.R` contains functions that build upon the
-    `qualtRics` package, but would be unlikely to be accepted in a PR.
-4.  `tidyverse_extensions.R` contains functions that aggregate common
-    data transformation steps into single function calls.
-5.  `nps.R` contains functions for working with Net Promoter Score (NPS) data.

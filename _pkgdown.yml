@@ -7,18 +7,15 @@ reference:
   contents:
   - logit
   - expit
-  - ddirichlet
-  - rdirichlet
+  - softmax
   - beta_interval
   - normal_interval
-  - pct_diff
-  - cramer_v
 
 - title: tidyverse extensions
   contents:
   - arrange_vector
   - percent
-  - ncells
+  - theme_rieke
   - ggquicksave
   - color_text
 

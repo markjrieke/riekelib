@@ -135,37 +135,5 @@ normal_upper <- function(mean, std_dev, conf) {
 }
 
 
-#' Calculate the percent difference between two values
-#'
-#' @param x,y Values you want to determine the percent difference between.
-#'
-#' @export
-#'
-#' @examples
-#' pct_diff(182, 195)
-pct_diff <- function(x, y) {
-
-  abs(x - y)/mean(c(x, y))
-
-}
-
-
-#' Calculate the effect size for a Chi-Square test using the Cramer's V measure
-#'
-#' @param chi_sq Chi-Square statistic from a Chi-Square test
-#' @param n total number of observations
-#' @param deg_free degrees of freedom in the Chi-Square test
-#'
-#' @export
-#'
-#' @examples
-#' cramer_v(33.2, 125, 4)
-cramer_v <- function(chi_sq, n, deg_free) {
-
-  sqrt(chi_sq/(n * deg_free))
-
-}
-
-
 
 
