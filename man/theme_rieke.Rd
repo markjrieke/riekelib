@@ -20,7 +20,8 @@ user (me) is on a windows machine & has Roboto Slab already installed.
 library(ggplot2)
 ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
-  labs(title = "The title is left-aligned and allows for **bold** characters",
+  theme_rieke() +
+  labs(title = "The title is left-aligned and allows for **bold characters**",
        subtitle = "You can also use any markdown formatting, including *italics*",
        caption = "Note the use of break<br>for line breaks")
 }

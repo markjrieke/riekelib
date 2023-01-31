@@ -4,6 +4,7 @@ A collection of functions I use regularly:
 
 * Math and stats extensions
   * `logit()`, `expit()`
+  * `softmax()`
   * `beta_interval()`, `normal_interval()`
 * Tidyverse extensions
   * `arrange_vector()`
