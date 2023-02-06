@@ -1,3 +1,7 @@
+# riekelib (development version)
+
+* Change default backend for plog rendering to [ragg](https://ragg.r-lib.org/). 
+
 # riekelib 0.1.0
 
 A collection of functions I use regularly:
