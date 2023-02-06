@@ -11,7 +11,6 @@ ggquicksave(
   height = 6,
   units = "in",
   dpi = 500,
-  device = grDevices::png,
   ...
 )
 }
@@ -24,12 +23,13 @@ ggquicksave(
 
 \item{dpi}{Plot resolution. Also accepts a string input: "retina" (320), "print" (300), or "screen" (72).}
 
-\item{device}{Device format (e.g., one of "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg", or "wmf")}
-
 \item{...}{Other arguments passed to \code{ggplot2::ggsave()}.}
 }
 \description{
-Call ggsave with default parameters
+Calls ggsave with some defaults that I happen to like. As of
+\href{https://ggplot2.tidyverse.org/news/index.html#ggplot2-334}{ggplot2 3.3.4},
+\code{\link[ggplot2:ggsave]{ggplot2::ggsave()}} uses \href{https://ragg.r-lib.org/}{ragg} as the backend
+device for saving.
 }
 \examples{
 \dontrun{

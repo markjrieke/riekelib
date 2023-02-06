@@ -103,11 +103,15 @@ theme_rieke <- function(base_size = 14, base_family = "Roboto Slab") {
 
 #' Call ggsave with default parameters
 #'
+#' @description Calls ggsave with some defaults that I happen to like. As of
+#' [ggplot2 3.3.4](https://ggplot2.tidyverse.org/news/index.html#ggplot2-334),
+#' [ggplot2::ggsave()] uses [ragg](https://ragg.r-lib.org/) as the backend
+#' device for saving.
+#'
 #' @param filename File name to create on disk.
 #' @param plot Plot to save, defaults to last plot displayed.
 #' @param width,height,units Plot size in `units` ("in", "cm", "mm", or "px").
 #' @param dpi Plot resolution. Also accepts a string input: "retina" (320), "print" (300), or "screen" (72).
-#' @param device Device format (e.g., one of "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg", or "wmf")
 #' @param ... Other arguments passed to `ggplot2::ggsave()`.
 #'
 #' @export
@@ -126,7 +130,6 @@ ggquicksave <- function(filename,
                         height = 6,
                         units = "in",
                         dpi = 500,
-                        device = grDevices::png,
                         ...) {
 
   ggplot2::ggsave(
@@ -136,7 +139,6 @@ ggquicksave <- function(filename,
     height = height,
     units = units,
     dpi = dpi,
-    device = device,
     ...
   )
 
