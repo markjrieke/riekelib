@@ -2,6 +2,7 @@
 
 export(arrange_vector)
 export(beta_interval)
+export(cholesky_decompose)
 export(color_text)
 export(deduplicate_ip)
 export(expit)

@@ -1,6 +1,7 @@
 # riekelib (development version)
 
 * Change default backend for plog rendering to [ragg](https://ragg.r-lib.org/). 
+* Add `cholesky_decompose()`
 
 # riekelib 0.1.0
 
