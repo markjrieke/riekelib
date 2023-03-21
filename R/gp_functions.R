@@ -20,3 +20,46 @@ cholesky_decompose <- function(x, ...) {
   t(chol(x, ...))
 
 }
+
+#' Exponentiated Quadratic Covariance
+#'
+#' @description Generate a \deqn{N \times N} covariance matrix, \deqn{\Sigma} by
+#'   passing a distance vector `x` to the exponentiated quadratic kernel function:
+#'
+#'   \deqn{\Sigma_{ij} = \alpha^2 \exp \left( \frac{|x_i - x_j|^2}{-2 \ \rho} \right) + \delta_{ij} \ \sigma}
+#'
+#'  where \deqn{\alpha^2} is the **amplitude**, \deqn{\rho} is the
+#'  **length_scale**, and \deqn{\sigma} is a small offset along the diagonal to
+#'  allow for additional variation.
+#'
+#' @return A \deqn{N \times N} symmetric, positive-semidefinite covariance matrix
+#'
+#' @param x A vector containing positions
+#' @param amplitude Numeric, controls the vertical scale of the covariance function
+#' @param length_scale Numeric, controls the horizontal scale of the covariance function
+#' @param delta A small offset added along the diagonal to ensure that the
+#'   function returns a positive-semidefinite matrix. Larger values allow for
+#'   increased variation at individual positions along the vector `x`.
+#'
+#' @export
+#'
+#' @examples
+#' x <- 1:12
+#' cov_exp_quad(x)
+cov_exp_quad <- function(x,
+                         amplitude = 1,
+                         length_scale = 1,
+                         delta = 1e-9) {
+
+  S <- matrix(nrow = length(x), ncol = length(x))
+
+  for (i in 1:nrow(S)) {
+    for (j in 1:ncol(S)) {
+      S[i,j] <- amplitude*exp(-(0.5/length_scale)*(x[i] - x[j])^2)
+    }
+    S[i,i] <- S[i,i] + delta
+  }
+
+  return(S)
+
+}
