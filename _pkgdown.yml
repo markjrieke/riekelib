@@ -8,6 +8,8 @@ reference:
   - logit
   - expit
   - softmax
+  - cov_exp_quad
+  - cholesky_decompose
   - beta_interval
   - normal_interval
 

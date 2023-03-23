@@ -18,16 +18,16 @@ function returns a positive-semidefinite matrix. Larger values allow for
 increased variation at individual positions along the vector \code{x}.}
 }
 \value{
-A \deqn{N \times N} symmetric, positive-semidefinite covariance matrix
+A \eqn{N \times N} symmetric, positive-semidefinite covariance matrix
 }
 \description{
-Generate a \deqn{N \times N} covariance matrix, \deqn{\Sigma} by
+Generate a \eqn{N \times N} covariance matrix, \eqn{\Sigma}, by
 passing a distance vector \code{x} to the exponentiated quadratic kernel function:
 
 \deqn{\Sigma_{ij} = \alpha^2 \exp \left( \frac{|x_i - x_j|^2}{-2 \ \rho} \right) + \delta_{ij} \ \sigma}
 
-where \deqn{\alpha^2} is the \strong{amplitude}, \deqn{\rho} is the
-\strong{length_scale}, and \deqn{\sigma} is a small offset along the diagonal to
+where \eqn{\alpha^2} is the \strong{amplitude}, \eqn{\rho} is the
+\strong{length_scale}, and \eqn{\sigma} is a small offset along the diagonal to
 allow for additional variation.
 }
 \examples{
