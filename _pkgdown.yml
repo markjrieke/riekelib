@@ -10,6 +10,7 @@ reference:
   - softmax
   - cov_exp_quad
   - cholesky_decompose
+  - condition_gaussian_process
   - beta_interval
   - normal_interval
 

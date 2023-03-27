@@ -15,11 +15,13 @@ URL: https://github.com/markjrieke/riekelib,
     https://markjrieke.github.io/riekelib/
 BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
+  assertthat,
   cli,
   dplyr,
   ggplot2,
   ggtext,
   gtools,
+  MASS,
   nplyr,
   purrr,
   qualtRics,

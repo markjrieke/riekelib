@@ -63,3 +63,75 @@ cov_exp_quad <- function(x,
   return(S)
 
 }
+
+#' Condition a Gaussian Process
+#'
+#' @description
+#'   `r lifecycle::badge("experimental")`
+#'
+#'   Condition a Multivariate Normal distribution based on a
+#'   Gaussian Process using a exponentiated quadratic covariance matrix.
+#'
+#' @return A matrix of size \eqn{M \times N}, where \eqn{M} is `length(x_new)`,
+#'   and \eqn{N} is `n`. Each column is a random draw from the conditioned
+#'   multivariate normal where each row corresponds to the draw at the position
+#'   in `x_new`.
+#'
+#' @param n number of random draws.
+#' @param x position of values to condition on.
+#' @param y values to condition on (at positions `x`).
+#' @param x_new new positions to estimate values at.
+#' @inheritParams cov_exp_quad
+#'
+#' @importFrom assertthat assert_that
+#' @importFrom MASS ginv
+#' @importFrom MASS mvrnorm
+#'
+#' @export
+#'
+#' @examples
+#' x <- 1:10
+#' y <- rep(0, 10)
+#' x_new <- 11:15
+#'
+#' condition_gaussian_process(3, x, y, x_new)
+condition_gaussian_process <- function(n,
+                                       x,
+                                       y,
+                                       x_new,
+                                       amplitude = 1,
+                                       length_scale = 1,
+                                       delta = 1e-9) {
+
+  # check that x/y are same length
+  assertthat::assert_that(length(x) == length(y),
+                          msg = "`x` and `y` must be the same length.")
+
+  # create x-vector following wikipedia notation
+  x1 <- x_new
+  x2 <- x
+  x_combined <- c(x1, x2)
+
+  # create combined covariance matrix
+  S <- cov_exp_quad(x_combined, amplitude, length_scale, delta)
+
+  # separate out covariance matrix
+  S11 <- S[1:length(x1), 1:length(x1)]
+  S22 <- S[(length(x1) + 1):nrow(S), (length(x1) + 1):ncol(S)]
+  S21 <- S[(length(x1) + 1):nrow(S), 1:length(x1)]
+  S12 <- t(S21)
+
+  # conditional mean/covariance
+  mu_bar <- S12 %*% MASS::ginv(S22) %*% y
+  Sigma_bar <- S11 - S12 %*% MASS::ginv(S22) %*% S21
+
+  # simulate new outcomes for y_new
+  y_new <- matrix(nrow = length(x_new), ncol = n)
+  for (i in 1:n) {
+    y_new[,i] <- MASS::mvrnorm(1, mu_bar, Sigma_bar)
+  }
+
+  return(y_new)
+
+}
+
