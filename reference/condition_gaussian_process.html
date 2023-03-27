@@ -50,8 +50,8 @@ Gaussian Process using a exponentiated quadratic covariance matrix."><meta prope
     </div>
 
     <div class="ref-description section level2">
-    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
-Condition a Multivariate Normal distribution based on a
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+<p>Condition a Multivariate Normal distribution based on a
 Gaussian Process using a exponentiated quadratic covariance matrix.</p>
     </div>
 
@@ -116,13 +116,13 @@ in <code>x_new</code>.</p>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x_new</span> <span class="op">&lt;-</span> <span class="fl">11</span><span class="op">:</span><span class="fl">15</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">condition_gaussian_process</span><span class="op">(</span><span class="fl">5</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">x_new</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]      [,2]        [,3]       [,4]       [,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2671554 0.8114079  0.18751689 -0.6126188  0.2825853</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] -0.1078700 1.1385341  0.18117994  0.1070060  0.2480613</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  0.7174221 0.7036036 -0.81849405  1.5168431  0.3317275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]  0.3117998 1.6324720 -0.60610131  1.1005468 -1.9255143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] -0.7228742 0.1881244  0.05389229 -0.2960366 -1.9648161</span>
+<span class="r-in"><span><span class="fu">condition_gaussian_process</span><span class="op">(</span><span class="fl">3</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">x_new</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]      [,2]      [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  0.8164800 1.4577487 -1.185767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  0.4690044 2.2398388 -1.582023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] -0.4320665 1.9518139 -1.635540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] -1.0240195 0.7714046 -1.067178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] -1.2086110 0.5669753 -1.073060</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
