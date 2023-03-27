@@ -95,32 +95,32 @@ the data frame.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mean std_dev ci_lower ci_upper</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  92.4    89.7    -<span style="color: #BB0000;">83.5</span>     268.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 103.     79.4    -<span style="color: #BB0000;">52.6</span>     259.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  78.8    75.8    -<span style="color: #BB0000;">69.7</span>     227.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 104.     85.8    -<span style="color: #BB0000;">64.1</span>     272.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  69.6    92.2   -<span style="color: #BB0000;">111.</span>      250.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 119.     81.3    -<span style="color: #BB0000;">40.0</span>     279.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  75.5    81.0    -<span style="color: #BB0000;">83.2</span>     234.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 135.     91.6    -<span style="color: #BB0000;">44.4</span>     314.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  73.1    84.3    -<span style="color: #BB0000;">92.1</span>     238.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  85.4    50.5    -<span style="color: #BB0000;">13.6</span>     184.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 137.     95.5    -<span style="color: #BB0000;">50.2</span>     324.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  81.1    85.1    -<span style="color: #BB0000;">85.6</span>     248.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 105.     98.4    -<span style="color: #BB0000;">87.7</span>     298.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  92.4    89.3    -<span style="color: #BB0000;">82.7</span>     267.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  84.8   101.    -<span style="color: #BB0000;">113.</span>      283.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 131.     57.2     18.6     243.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  92.2    67.9    -<span style="color: #BB0000;">41.0</span>     225.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  92.3    84.9    -<span style="color: #BB0000;">74.1</span>     259.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  92.7   101.    -<span style="color: #BB0000;">106.</span>      291.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  97.1    61.5    -<span style="color: #BB0000;">23.4</span>     218.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># apply a custom confidence interval</span></span></span>
 <span class="r-in"><span><span class="fu">normal_interval</span><span class="op">(</span><span class="va">example</span>, <span class="va">mean</span>, <span class="va">std_dev</span>, conf <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mean std_dev ci_lower ci_upper</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  92.4    89.7   -<span style="color: #BB0000;">139.</span>      324.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 103.     79.4   -<span style="color: #BB0000;">101.</span>      308.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  78.8    75.8   -<span style="color: #BB0000;">116.</span>      274.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 104.     85.8   -<span style="color: #BB0000;">117.</span>      325.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  69.6    92.2   -<span style="color: #BB0000;">168.</span>      307.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 119.     81.3    -<span style="color: #BB0000;">90.1</span>     329.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  75.5    81.0   -<span style="color: #BB0000;">133.</span>      284.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 135.     91.6   -<span style="color: #BB0000;">101.</span>      371.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  73.1    84.3   -<span style="color: #BB0000;">144.</span>      290.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  85.4    50.5    -<span style="color: #BB0000;">44.8</span>     216.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 137.     95.5   -<span style="color: #BB0000;">109.</span>      383.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  81.1    85.1   -<span style="color: #BB0000;">138.</span>      300.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 105.     98.4   -<span style="color: #BB0000;">148.</span>      359.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  92.4    89.3   -<span style="color: #BB0000;">138.</span>      322.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  84.8   101.    -<span style="color: #BB0000;">175.</span>      345.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 131.     57.2    -<span style="color: #BB0000;">16.6</span>     278.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  92.2    67.9    -<span style="color: #BB0000;">82.9</span>     267.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  92.3    84.9   -<span style="color: #BB0000;">126.</span>      311.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  92.7   101.    -<span style="color: #BB0000;">168.</span>      353.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  97.1    61.5    -<span style="color: #BB0000;">61.3</span>     256.</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
