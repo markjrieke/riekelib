@@ -39,6 +39,7 @@ in \code{x_new}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Condition a Multivariate Normal distribution based on a
 Gaussian Process using a exponentiated quadratic covariance matrix.
 }
@@ -47,5 +48,5 @@ x <- 1:10
 y <- rep(0, 10)
 x_new <- 11:15
 
-condition_gaussian_process(5, x, y, x_new)
+condition_gaussian_process(3, x, y, x_new)
 }
