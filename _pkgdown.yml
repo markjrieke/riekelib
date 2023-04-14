@@ -20,6 +20,7 @@ reference:
   - percent
   - theme_rieke
   - ggquicksave
+  - scale_xy_percent
   - color_text
 
 - title: Qualtrics extensions
