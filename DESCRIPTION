@@ -17,6 +17,7 @@ BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
   assertthat,
   cli,
+  colorspace,
   dplyr,
   ggplot2,
   ggtext,
