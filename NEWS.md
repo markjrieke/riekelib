@@ -5,6 +5,7 @@
   * `cholesky_decompose()`: generate the lower triangular Cholesky decomposition of a matrix.
   * `cov_exp_quad()`: generate a covariance matrix using the exponentiated quadratic kernel. 
   * `condition_gaussian_process()`: generate new draws from a multivariate normal distribution by conditioning on a Gaussian Process.
+* Update `theme_rieke()` to use Tiempos Text/IBM Plex Sans for the title/text by default
 
 # riekelib 0.1.0
 
