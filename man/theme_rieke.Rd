@@ -4,19 +4,27 @@
 \alias{theme_rieke}
 \title{Custom ggplot2 theme}
 \usage{
-theme_rieke(base_size = 14, base_family = "Roboto Slab")
+theme_rieke(
+  base_size = 14,
+  title_family = "Tiempos Text",
+  base_family = "IBM Plex Sans",
+  base_color = "gray20"
+)
 }
 \arguments{
 \item{base_size}{base font size, given in pts}
 
-\item{base_family}{base font family}
+\item{title_family}{font family for the plot title}
+
+\item{base_family}{font family for all text in the plot except the title}
+
+\item{base_color}{color for all text in the plot}
 }
 \description{
 A custom ggplot2 theme based on my own personal preferences. This assumes the
-user (me) is on a windows machine & has Roboto Slab already installed.
+user (me) is on a windows machine & has the required custom fonts already installed.
 }
 \examples{
-\dontrun{
 library(ggplot2)
 ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
@@ -24,5 +32,4 @@ ggplot(mtcars, aes(mpg, wt)) +
   labs(title = "The title is left-aligned and allows for **bold characters**",
        subtitle = "You can also use any markdown formatting, including *italics*",
        caption = "Note the use of break<br>for line breaks")
-}
 }

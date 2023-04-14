@@ -66,19 +66,21 @@ percent <- function(.data, ..., .keep_n = FALSE) {
 #' Custom ggplot2 theme
 #'
 #' A custom ggplot2 theme based on my own personal preferences. This assumes the
-#' user (me) is on a windows machine & has Roboto Slab already installed.
+#' user (me) is on a windows machine & has the required custom fonts already installed.
 #'
 #' @param base_size base font size, given in pts
-#' @param base_family base font family
+#' @param title_family font family for the plot title
+#' @param base_family font family for all text in the plot except the title
+#' @param base_color color for all text in the plot
 #'
 #' @importFrom ggplot2 theme_minimal
 #' @importFrom ggplot2 theme
 #' @importFrom ggplot2 element_rect
 #' @importFrom ggtext element_markdown
+#' @importFrom colorspace lighten
 #'
 #' @export
 #' @examples
-#' \dontrun{
 #' library(ggplot2)
 #' ggplot(mtcars, aes(mpg, wt)) +
 #'   geom_point() +
@@ -86,16 +88,22 @@ percent <- function(.data, ..., .keep_n = FALSE) {
 #'   labs(title = "The title is left-aligned and allows for **bold characters**",
 #'        subtitle = "You can also use any markdown formatting, including *italics*",
 #'        caption = "Note the use of break<br>for line breaks")
-#' }
-theme_rieke <- function(base_size = 14, base_family = "Roboto Slab") {
+theme_rieke <- function(base_size = 14,
+                        title_family = "Tiempos Text",
+                        base_family = "IBM Plex Sans",
+                        base_color = "gray20") {
 
   ggplot2::theme_minimal(base_family = base_family,
                          base_size = base_size) +
     ggplot2::theme(plot.title.position = "plot",
                    plot.background = ggplot2::element_rect(fill = "white", color = "white"),
-                   plot.title = ggtext::element_markdown(),
-                   plot.subtitle = ggtext::element_markdown(),
-                   plot.caption = ggtext::element_markdown(color = "gray40"))
+                   plot.title = ggtext::element_markdown(family = title_family, color = base_color),
+                   plot.subtitle = ggtext::element_markdown(color = base_color),
+                   plot.caption = ggtext::element_markdown(color = colorspace::lighten(base_color, 0.4)),
+                   axis.text = ggtext::element_markdown(color = base_color),
+                   axis.title = ggtext::element_markdown(color = base_color),
+                   legend.text = ggtext::element_markdown(color = base_color),
+                   legend.title = ggtext::element_markdown(color = base_color))
 
 }
 
