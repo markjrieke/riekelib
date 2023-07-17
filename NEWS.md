@@ -1,4 +1,4 @@
-# riekelib (development version)
+# riekelib 0.2.0
 
 ## New features
 
