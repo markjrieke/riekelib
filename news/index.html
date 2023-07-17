@@ -46,25 +46,34 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="riekelib-development-version">riekelib (development version)<a class="anchor" aria-label="anchor" href="#riekelib-development-version"></a></h2>
-<ul><li>Change default backend for plot rendering to <a href="https://ragg.r-lib.org/" class="external-link">ragg</a>.</li>
-<li>Add functions for working with Gaussian processes:
+<div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<div class="section level4">
+<h4 id="gaussian-process-functions-development-version">Gaussian process functions<a class="anchor" aria-label="anchor" href="#gaussian-process-functions-development-version"></a></h4>
 <ul><li>
-<code><a href="../reference/cholesky_decompose.html">cholesky_decompose()</a></code>: generate the lower triangular Cholesky decomposition of a matrix.</li>
+<code><a href="../reference/cholesky_decompose.html">cholesky_decompose()</a></code>: generate the lower triangular Cholesky decomposition of a matrix (consistent with Stan’s implementation).</li>
 <li>
 <code><a href="../reference/cov_exp_quad.html">cov_exp_quad()</a></code>: generate a covariance matrix using the exponentiated quadratic kernel.</li>
 <li>
 <code><a href="../reference/condition_gaussian_process.html">condition_gaussian_process()</a></code>: generate new draws from a multivariate normal distribution by conditioning on a Gaussian Process.</li>
-</ul></li>
-<li>Add shortcut functions for formatting scales
-<ul><li>
-<code><a href="../reference/scale_xy_percent.html">scale_xy_percent()</a></code>, <code><a href="../reference/scale_xy_percent.html">scale_x_percent()</a></code>, <code><a href="../reference/scale_xy_percent.html">scale_y_percent()</a></code>
-</li>
-<li>
-<code><a href="../reference/scale_xy_percent.html">scale_xy_comma()</a></code>, <code><a href="../reference/scale_xy_percent.html">scale_x_comma()</a></code>, <code><a href="../reference/scale_xy_percent.html">scale_y_comma()</a></code>
-</li>
-</ul></li>
-<li>Update <code><a href="../reference/theme_rieke.html">theme_rieke()</a></code> to use Tiempos Text/IBM Plex Sans for the title/text by default</li>
 </ul></div>
+<div class="section level4">
+<h4 id="ggplot2-functions-development-version">ggplot2 functions<a class="anchor" aria-label="anchor" href="#ggplot2-functions-development-version"></a></h4>
+<ul><li>
+<code><a href="../reference/scale_xy_percent.html">scale_xy_percent()</a></code>, <code><a href="../reference/scale_xy_percent.html">scale_x_percent()</a></code>, and <code><a href="../reference/scale_xy_percent.html">scale_y_percent()</a></code> provide shortcuts for formatting axis labels with <code><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">scales::label_percent()</a></code>.</li>
+<li>
+<code><a href="../reference/scale_xy_percent.html">scale_xy_comma()</a></code>, <code><a href="../reference/scale_xy_percent.html">scale_x_comma()</a></code>, and <code><a href="../reference/scale_xy_percent.html">scale_y_comma()</a></code> provide shortcuts for formatting axis labels with <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_comma()</a></code>.</li>
+</ul></div>
+</div>
+<div class="section level3">
+<h3 id="minor-bug-fixes-and-improvements-development-version">Minor bug fixes and improvements<a class="anchor" aria-label="anchor" href="#minor-bug-fixes-and-improvements-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/ggquicksave.html">ggquicksave()</a></code> now uses <a href="https://ragg.r-lib.org/" class="external-link">ragg</a> by default.</li>
+<li>
+<code><a href="../reference/theme_rieke.html">theme_rieke()</a></code> now uses the fonts Tiempos Text and IBM Plex Sans for the title and other text, respectively, by default.</li>
+<li>Where applicable, functions now use the <code>.data</code> pronoun from <a href="https://rlang.r-lib.org/" class="external-link">rlang</a>. This removes the need for <code>globals.R</code>.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="riekelib-010">riekelib 0.1.0<a class="anchor" aria-label="anchor" href="#riekelib-010"></a></h2>
 <p>A collection of functions I use regularly:</p>
