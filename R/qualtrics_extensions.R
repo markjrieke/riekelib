@@ -26,6 +26,7 @@
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
 #' @importFrom purrr map
+#' @importFrom rlang .data
 #'
 #' @examples
 #' \dontrun{
@@ -45,7 +46,7 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 
   # get a list of survey ids
   surveys <- qualtRics::all_surveys()
-  surveys <- dplyr::filter(surveys, name %in% ui_names)
+  surveys <- dplyr::filter(surveys, .data$name %in% ui_names)
 
   # get list of survey_names that don't appear in ui
   not_fetched <- survey_names[which(!survey_names %in% surveys$name)]
@@ -71,8 +72,8 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 
   } else {
 
-    surveys <- dplyr::select(surveys, survey_name = name, survey_id = id)
-    surveys <- dplyr::mutate(surveys, responses = purrr::map(survey_id, ~qualtRics::fetch_survey(.x, !!!dots, time_zone = time_zone)))
+    surveys <- dplyr::select(surveys, survey_name = .data$name, survey_id = id)
+    surveys <- dplyr::mutate(surveys, responses = purrr::map(.data$survey_id, ~qualtRics::fetch_survey(.x, !!!dots, time_zone = time_zone)))
 
   }
 
@@ -93,6 +94,7 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 #'
 #' @importFrom cli cli_abort
 #' @importFrom stringr str_remove
+#' @importFrom rlang .data
 #'
 #' @examples
 #' # list of survey names as they appear in the qualtrics ui
@@ -132,12 +134,12 @@ fix_survey_names <- function(.data) {
 
   dplyr::mutate(
       .data,
-      survey_name = stringr::str_remove(survey_name, "Live - "),
-      survey_name = stringr::str_remove(survey_name, "Adult "),
-      survey_name = stringr::str_remove(survey_name, "- "),
-      survey_name = stringr::str_remove(survey_name, " Department"),
-      survey_name = stringr::str_remove(survey_name, " Paper"),
-      survey_name = stringr::str_remove(survey_name, "atric")
+      survey_name = stringr::str_remove(.data$survey_name, "Live - "),
+      survey_name = stringr::str_remove(.data$survey_name, "Adult "),
+      survey_name = stringr::str_remove(.data$survey_name, "- "),
+      survey_name = stringr::str_remove(.data$survey_name, " Department"),
+      survey_name = stringr::str_remove(.data$survey_name, " Paper"),
+      survey_name = stringr::str_remove(.data$survey_name, "atric")
     )
 
 }
@@ -164,6 +166,7 @@ fix_survey_names <- function(.data) {
 #' @importFrom tidyr unnest
 #' @importFrom nplyr nest_anti_join
 #' @importFrom dplyr bind_rows
+#' @importFrom rlang .data
 #'
 #' @examples
 #' \dontrun{
@@ -201,7 +204,7 @@ deduplicate_ip <- function(.data) {
   }
 
   # check that all three surveys are present
-  ip_names <- dplyr::filter(surveys, stringr::str_detect(survey_name, "Inpatient"))$survey_name
+  ip_names <- dplyr::filter(surveys, stringr::str_detect(.data$survey_name, "Inpatient"))$survey_name
   if (length(ip_names) != 3) {
 
     cli::cli_abort("Missing one of needed surveys: Inpatient, Pedi Inpatient, or Inpatient Rehab")
@@ -209,20 +212,20 @@ deduplicate_ip <- function(.data) {
   }
 
   # separate out surveys
-  ip <- dplyr::filter(surveys, survey_name == "Inpatient")
-  pip <- dplyr::filter(surveys, survey_name == "Pedi Inpatient")
-  ipr <- dplyr::filter(surveys, survey_name == "Inpatient Rehab")
+  ip <- dplyr::filter(surveys, .data$survey_name == "Inpatient")
+  pip <- dplyr::filter(surveys, .data$survey_name == "Pedi Inpatient")
+  ipr <- dplyr::filter(surveys, .data$survey_name == "Inpatient Rehab")
 
   # unnest pip/ipr to be able to anti join later
-  pip <- tidyr::unnest(pip, responses)
-  ipr <- tidyr::unnest(ipr, responses)
+  pip <- tidyr::unnest(pip, .data$responses)
+  ipr <- tidyr::unnest(ipr, .data$responses)
 
   # remove pip/ipr records from ip
-  ip <- nplyr::nest_anti_join(ip, responses, pip, by = "UNIQUE_ID")
-  ip <- nplyr::nest_anti_join(ip, responses, ipr, by = "UNIQUE_ID")
+  ip <- nplyr::nest_anti_join(ip, .data$responses, pip, by = "UNIQUE_ID")
+  ip <- nplyr::nest_anti_join(ip, .data$responses, ipr, by = "UNIQUE_ID")
 
   # rejoin ip back to the survey frame
-  surveys <- dplyr::filter(surveys, survey_name != "Inpatient")
+  surveys <- dplyr::filter(surveys, .data$survey_name != "Inpatient")
   surveys <- dplyr::bind_rows(surveys, ip)
 
   return(surveys)

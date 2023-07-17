@@ -4,10 +4,10 @@
 \alias{percent}
 \title{Return the percentage each value or combination of values appear in a tibble or dataframe}
 \usage{
-percent(.data, ..., .keep_n = FALSE)
+percent(data, ..., .keep_n = FALSE)
 }
 \arguments{
-\item{.data}{a tibble or dataframe}
+\item{data}{a tibble or dataframe}
 
 \item{...}{parameters to pass to \code{dplyr::count()}}
 

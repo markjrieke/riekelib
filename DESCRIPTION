@@ -27,6 +27,7 @@ Imports:
   nplyr,
   purrr,
   qualtRics,
+  rlang,
   scales,
   stats,
   stringr,
