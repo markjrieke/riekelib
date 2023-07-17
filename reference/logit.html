@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">riekelib</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,13 +99,13 @@ bounds correspond to <code>-Inf</code>/<code>Inf</code> on the unbounded scale. 
 <span class="r-in"><span><span class="co"># bound vector of unbounded values to [0, 1]</span></span></span>
 <span class="r-in"><span><span class="va">myvec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">expit</span><span class="op">(</span><span class="va">myvec</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.7581676 0.1706554 0.3088592 0.7473066 0.5940228 0.4792350 0.2578853</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.6357137 0.4454648 0.7846622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.3542970 0.5875842 0.7172129 0.1812503 0.4956751 0.3121710 0.4012199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.8989537 0.2471291 0.4743807</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># bound vector of unbounded values to [100, 200]</span></span></span>
 <span class="r-in"><span><span class="fu">expit</span><span class="op">(</span><span class="va">myvec</span>, lower_bound <span class="op">=</span> <span class="fl">100</span>, upper_bound <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 175.8168 117.0655 130.8859 174.7307 159.4023 147.9235 125.7885 163.5714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 144.5465 178.4662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 135.4297 158.7584 171.7213 118.1250 149.5675 131.2171 140.1220 189.8954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 124.7129 147.4381</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
