@@ -2,35 +2,93 @@
 % Please edit documentation in R/gp_functions.R
 \name{cov_exp_quad}
 \alias{cov_exp_quad}
-\title{Exponentiated Quadratic Covariance}
+\alias{cov_rational}
+\alias{cov_periodic}
+\alias{cov_linear}
+\alias{cov_noise}
+\title{Covariance Functions}
 \usage{
 cov_exp_quad(x, amplitude = 1, length_scale = 1, delta = 1e-09)
+
+cov_rational(x, amplitude = 1, length_scale = 1, mixture = 1, delta = 1e-09)
+
+cov_periodic(x, amplitude = 1, length_scale = 1, period = 1, delta = 1e-09)
+
+cov_linear(x, slope = 0, intercept = 0, constant = 0, delta = 1e-09)
+
+cov_noise(x, amplitude = 1)
 }
 \arguments{
-\item{x}{A vector containing positions}
+\item{x}{A vector containing positions.}
 
-\item{amplitude}{Numeric, controls the vertical scale of the covariance function}
+\item{amplitude}{Vertical scale of the covariance function}
 
-\item{length_scale}{Numeric, controls the horizontal scale of the covariance function}
+\item{length_scale}{Horizontal scale of the covariance function}
 
-\item{delta}{A small offset added along the diagonal to ensure that the
-function returns a positive-semidefinite matrix. Larger values allow for
-increased variation at individual positions along the vector \code{x}.}
+\item{delta}{A small offset along the diagonal of the resulting covariance
+matrix to ensure the function returns a positive-semidefinite matrix. Can
+also be used as a white noise kernel to allow for increased variation at
+individual positions along the vector \code{x}.}
+
+\item{mixture}{Scale-mixture for the rational quadratic covariance function}
+
+\item{period}{Period of repetition for the periodic covariance function}
+
+\item{slope}{Slope of the linear covariance function}
+
+\item{intercept}{Intercept of the linear covariance function}
+
+\item{constant}{A constant that offsets the linear covariance function along
+the x-axis from the origin.}
 }
 \value{
 A \eqn{N \times N} symmetric, positive-semidefinite covariance matrix
 }
 \description{
 Generate a \eqn{N \times N} covariance matrix, \eqn{\Sigma}, by
-passing a distance vector \code{x} to the exponentiated quadratic kernel function:
+passing a distance vector of length \eqn{N}, \code{x}, to one of the following
+covariance functions:
+\itemize{
+\item \strong{Exponentiated Quadtratic} \deqn{\Sigma_{ij} = \sigma^2 \exp \left( \frac{|x_i - x_j|^2}{-2 \ \rho^2} \right)}
+\item \strong{Rational Quadratic} \deqn{\Sigma_{ij} = \sigma^2 \left(1 + \frac{|x_i - x_j|^2}{2 \alpha \rho^2} \right)^{-\alpha}}
+\item \strong{Periodic} \deqn{\Sigma_{ij} = \sigma^2 \exp \left(\frac{-2 \sin^2(\pi |x_i - x_j|/p)}{\rho^2} \right)}
+\item \strong{Linear} \deqn{\Sigma_{ij} = \beta_0 + \beta (x_i - c)(x_j - c)}
+\item \strong{White Noise} \deqn{\Sigma_{ij} = \sigma^2 I}
+}
 
-\deqn{\Sigma_{ij} = \alpha^2 \exp \left( \frac{|x_i - x_j|^2}{-2 \ \rho} \right) + \delta_{ij} \ \sigma}
+where \eqn{\sigma^2} is the \code{amplitude} and \eqn{\rho} is the \code{length_scale}
+at which the covariance function can operate.
 
-where \eqn{\alpha^2} is the \strong{amplitude}, \eqn{\rho} is the
-\strong{length_scale}, and \eqn{\sigma} is a small offset along the diagonal to
-allow for additional variation.
+In the rational quadratic kernel, \eqn{\alpha} is the scale-mixture As
+\eqn{\alpha \rightarrow \infty} the rational quadratic converges to the
+exponentiated quadratic.
+
+In the periodic kernel, \eqn{p} is the period over which the function repeats.
+
+In the linear kernel, \eqn{\beta_0} and \eqn{\beta} are intercept and slope
+parameters, respectively. \eqn{c} is a constant that offsets the linear
+covariance from the origin.
+
+Finally, in the white noise kernel, \eqn{I} is the identity matrix.
 }
 \examples{
-x <- 1:12
-cov_exp_quad(x)
+x <- seq(from = -2, to = 2, length.out = 50)
+
+# heatmap of covariance - higher values = greater covariance
+cov_exp_quad(x) |> heatmap(Rowv = NA, Colv = NA)
+
+# decreasing the length scale decreases the range over which values covary
+cov_exp_quad(x, length_scale = 0.5) |> heatmap(Rowv = NA, Colv = NA)
+
+# rational quadratic includes a mixture parameter
+cov_rational(x, mixture = 0.1) |> heatmap(Rowv = NA, Colv = NA)
+
+# periodic repeats over a distance
+cov_periodic(x, period = 1, length_scale = 2) |> heatmap(Rowv = NA, Colv = NA)
+
+# linear covariance increases/decreases linearly
+cov_linear(x, slope = 1) |> heatmap(Rowv = NA, Colv = NA)
+
+# white noise is applied only along the diagonal
+cov_noise(x) |> heatmap(Rowv = NA, Colv = NA)
 }
