@@ -1,3 +1,13 @@
+# riekelib 0.2.0.9000
+
+## New features
+
+* Additional covariance functions for gaussian processes:
+  * `cov_rational()`
+  * `cov_periodic()`
+  * `cov_linear()`
+  * `cov_noise()`
+
 # riekelib 0.2.0
 
 ## New features

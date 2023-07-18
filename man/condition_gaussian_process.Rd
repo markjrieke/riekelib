@@ -23,13 +23,14 @@ condition_gaussian_process(
 
 \item{x_new}{new positions to estimate values at.}
 
-\item{amplitude}{Numeric, controls the vertical scale of the covariance function}
+\item{amplitude}{Vertical scale of the covariance function}
 
-\item{length_scale}{Numeric, controls the horizontal scale of the covariance function}
+\item{length_scale}{Horizontal scale of the covariance function}
 
-\item{delta}{A small offset added along the diagonal to ensure that the
-function returns a positive-semidefinite matrix. Larger values allow for
-increased variation at individual positions along the vector \code{x}.}
+\item{delta}{A small offset along the diagonal of the resulting covariance
+matrix to ensure the function returns a positive-semidefinite matrix. Can
+also be used as a white noise kernel to allow for increased variation at
+individual positions along the vector \code{x}.}
 }
 \value{
 A matrix of size \eqn{M \times N}, where \eqn{M} is \code{length(x_new)},
