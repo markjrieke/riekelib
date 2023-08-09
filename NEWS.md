@@ -7,6 +7,9 @@
   * `cov_periodic()`
   * `cov_linear()`
   * `cov_noise()`
+* Add functions for retrieving standard MH recodes:
+  * `set_recode_path()`
+  * `read_recodes()`
 
 # riekelib 0.2.0
 
