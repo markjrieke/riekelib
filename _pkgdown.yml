@@ -28,5 +28,7 @@ reference:
   - fetch_surveys
   - fix_survey_names
   - deduplicate_ip
+  - read_recodes
+  - set_recode_path
   - rnps
   - qnps
