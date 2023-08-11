@@ -10,6 +10,9 @@
 * Add functions for retrieving standard MH recodes:
   * `set_recode_path()`
   * `read_recodes()`
+* Other functions
+  * `fix_campus_names()`: convert campus names as they appear in the Qualtrics 
+    UI to the campus shorthand name.
 
 # riekelib 0.2.0
 

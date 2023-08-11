@@ -7,8 +7,8 @@
 deduplicate_ip(.data)
 }
 \arguments{
-\item{.data}{A tibble returned by \code{fetch_surveys()}. The column \code{survey_id}
-may be removed but both \code{survey_name} and \code{responses} must be present.}
+\item{.data}{A tibble. \code{fix_survey_names()} requires the column \code{survey_name}
+to be present. \code{fix_campus_names()} requires the column \code{campus} to be present.}
 }
 \description{
 Due to Qualtrics' HCAHPs sampling engine, Memorial Hermann's Inpatient survey
