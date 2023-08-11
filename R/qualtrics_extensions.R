@@ -81,20 +81,23 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 
 }
 
-#' Reformat Memorial Hermann Survey Names
+#' Reformat Memorial Hermann Survey or Campus Names
 #'
 #' @description
-#' Convenience function for reformatting MH Survey names as they appear in the
-#' Qualtrics UI to something more legible.
+#' `fix_survey_names()` is a convenience function for reformatting MH Survey
+#' names as they appear in the Qualtrics UI to something more legible.
+#' `fix_campus_names()` is a similar convenience function that reformats full
+#' campus names to their shorthand equivalent.
 #'
-#' @param .data A tibble returned by `fetch_surveys()`. The column `survey_id`
-#' may be removed but both `survey_name` and `responses` must be present.
+#' @param .data A tibble. `fix_survey_names()` requires the column `survey_name`
+#'   to be present. `fix_campus_names()` requires the column `campus` to be present.
 #'
 #' @export
 #'
 #' @importFrom cli cli_abort
 #' @importFrom stringr str_remove
 #' @importFrom rlang .data
+#' @importFrom dplyr case_match
 #'
 #' @examples
 #' # list of survey names as they appear in the qualtrics ui
@@ -123,6 +126,32 @@ fetch_surveys <- function(survey_names, ..., time_zone = "America/Chicago") {
 #'
 #' # better names!
 #' fix_survey_names(surveys)
+#'
+#' # list of campus names as they appear in the qualtrics ui
+#' campuses <-
+#'   tibble::tibble(
+#'     campus = c("Children's Memorial Hermann Hospital",
+#'                "Memorial Hermann - Texas Medical Center",
+#'                "Memorial Hermann / Rockets Orthopedic Hospital",
+#'                "Memorial Hermann Cypress Hospital",
+#'                "Memorial Hermann Greater Heights Hospital",
+#'                "Memorial Hermann Katy Hospital",
+#'                "Memorial Hermann Memorial City Medical Center",
+#'                "Memorial Hermann Northeast Hospital",
+#'                "Memorial Hermann Pearland Hospital",
+#'                "Memorial Hermann Rehabilitation Hospital - Katy",
+#'                "Memorial Hermann Southeast Hospital",
+#'                "Memorial Hermann Southwest Hospital",
+#'                "Memorial Hermann Sugar Land Hospital",
+#'                "Memorial Hermann The Woodlands Medical Center",
+#'                "TIRR Memorial Hermann")
+#'   )
+#'
+#' # bad names!
+#' campuses
+#'
+#' # better names!
+#' fix_campus_names(campuses)
 fix_survey_names <- function(.data) {
 
   # check for correct col
@@ -141,6 +170,40 @@ fix_survey_names <- function(.data) {
       survey_name = stringr::str_remove(.data$survey_name, " Paper"),
       survey_name = stringr::str_remove(.data$survey_name, "atric")
     )
+
+}
+
+#' @export
+#' @rdname fix_survey_names
+fix_campus_names <- function(.data) {
+
+  # check for correct col
+  if (!"campus" %in% names(.data)) {
+
+    cli::cli_abort("Missing needed col: `campus`")
+
+  }
+
+  dplyr::mutate(
+    .data,
+    campus = dplyr::case_match(.data$campus,
+                               "Children's Memorial Hermann Hospital" ~ "CMHH",
+                               "Memorial Hermann - Texas Medical Center" ~ "TMC",
+                               "Memorial Hermann / Rockets Orthopedic Hospital" ~ "MHROH",
+                               "Memorial Hermann Cypress Hospital" ~ "Cypress",
+                               "Memorial Hermann Greater Heights Hospital" ~ "Greater Heights",
+                               "Memorial Hermann Katy Hospital" ~ "Katy",
+                               "Memorial Hermann Memorial City Medical Center" ~ "Memorial City",
+                               "Memorial Hermann Northeast Hospital" ~ "Northeast",
+                               "Memorial Hermann Pearland Hospital" ~ "Pearland",
+                               "Memorial Hermann Rehabilitation Hospital - Katy" ~ "Katy Rehab",
+                               "Memorial Hermann Southeast Hospital" ~ "Southeast",
+                               "Memorial Hermann Southwest Hospital" ~ "Southwest",
+                               "Memorial Hermann Sugar Land Hospital" ~ "Sugar Land",
+                               "Memorial Hermann The Woodlands Medical Center" ~ "Woodlands",
+                               "TIRR Memorial Hermann" ~ "TIRR",
+                               .default = .data$campus)
+  )
 
 }
 
