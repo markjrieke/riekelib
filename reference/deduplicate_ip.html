@@ -75,8 +75,8 @@ Inpatient file, using the encounter ID (<code>"UNIQUE_ID"</code>) as the key.</p
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>.data</dt>
-<dd><p>A tibble returned by <code><a href="fetch_surveys.html">fetch_surveys()</a></code>. The column <code>survey_id</code>
-may be removed but both <code>survey_name</code> and <code>responses</code> must be present.</p></dd>
+<dd><p>A tibble. <code><a href="fix_survey_names.html">fix_survey_names()</a></code> requires the column <code>survey_name</code>
+to be present. <code><a href="fix_survey_names.html">fix_campus_names()</a></code> requires the column <code>campus</code> to be present.</p></dd>
 
 </dl></div>
 
