@@ -301,8 +301,7 @@ deduplicate_ip <- function(.data) {
 #' Saves an environment variable containing the path to the recode list. Saved as
 #' `MEMORIAL_HERMANN_RECODE_PATH`.
 #'
-#' @param path folder path to recode list. Should include the full file name, i.e.,
-#'   `"path/to/recode/list/list_file.csv"`.
+#' @param path folder path to recode list. E.g., `"path/to/recode/list/"`.
 #' @param install save the folder path to your .Renviron for future use.
 #'
 #' @importFrom askpass askpass
@@ -365,6 +364,8 @@ set_recode_path <- function(path = NULL, install = TRUE) {
 #' Reads in Memorial Hermann recodes from version control. Specify the exact
 #' recode document to be used by setting the recode path with `set_recode_path()`.
 #'
+#' @param file recode file name to read in. Reads in from the `edit` directory.
+#'
 #' @importFrom cli cli_abort
 #' @importFrom readr read_csv
 #'
@@ -374,14 +375,14 @@ set_recode_path <- function(path = NULL, install = TRUE) {
 #' \dontrun{
 #'   read_recodes()
 #' }
-read_recodes <- function() {
+read_recodes <- function(file = "consolidated") {
 
   path <- Sys.getenv("MEMORIAL_HERMANN_RECODE_PATH")
   if (path == "") {
     cli::cli_abort("No path available in the environment. Please call `set_recode_path()`.")
   }
 
-  file <- readr::read_csv(path)
+  file <- readr::read_csv(paste0(path, file, ".csv"))
 
   return(file)
 

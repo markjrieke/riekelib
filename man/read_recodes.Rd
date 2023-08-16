@@ -4,7 +4,10 @@
 \alias{read_recodes}
 \title{Read Memorial Hermann recodes from version control.}
 \usage{
-read_recodes()
+read_recodes(file = "consolidated")
+}
+\arguments{
+\item{file}{recode file name to read in. Reads in from the \code{edit} directory.}
 }
 \description{
 Reads in Memorial Hermann recodes from version control. Specify the exact
