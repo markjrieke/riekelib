@@ -7,8 +7,7 @@
 set_recode_path(path = NULL, install = TRUE)
 }
 \arguments{
-\item{path}{folder path to recode list. Should include the full file name, i.e.,
-\code{"path/to/recode/list/list_file.csv"}.}
+\item{path}{folder path to recode list. E.g., \code{"path/to/recode/list/"}.}
 
 \item{install}{save the folder path to your .Renviron for future use.}
 }
