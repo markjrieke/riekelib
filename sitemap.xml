@@ -37,15 +37,6 @@
     <loc>https://markjrieke.github.io/riekelib/reference/cov_exp_quad.html</loc>
   </url>
   <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/deduplicate_ip.html</loc>
-  </url>
-  <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/fetch_surveys.html</loc>
-  </url>
-  <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/fix_survey_names.html</loc>
-  </url>
-  <url>
     <loc>https://markjrieke.github.io/riekelib/reference/ggquicksave.html</loc>
   </url>
   <url>
@@ -61,19 +52,10 @@
     <loc>https://markjrieke.github.io/riekelib/reference/percent.html</loc>
   </url>
   <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/read_recodes.html</loc>
-  </url>
-  <url>
     <loc>https://markjrieke.github.io/riekelib/reference/riekelib-package.html</loc>
   </url>
   <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/rnps.html</loc>
-  </url>
-  <url>
     <loc>https://markjrieke.github.io/riekelib/reference/scale_xy_percent.html</loc>
-  </url>
-  <url>
-    <loc>https://markjrieke.github.io/riekelib/reference/set_recode_path.html</loc>
   </url>
   <url>
     <loc>https://markjrieke.github.io/riekelib/reference/softmax.html</loc>
