@@ -15,26 +15,18 @@ URL: https://github.com/markjrieke/riekelib,
     https://markjrieke.github.io/riekelib/
 BugReports: https://github.com/markjrieke/riekelib/issues
 Imports:
-  askpass,
   assertthat,
   cli,
   colorspace,
   dplyr,
   ggplot2,
   ggtext,
-  gtools,
   lifecycle (>= 1.0.3),
   MASS,
-  nplyr,
-  purrr,
-  qualtRics,
-  readr,
   rlang,
   scales,
   stats,
-  stringr,
-  tibble,
-  tidyr
+  tibble
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
