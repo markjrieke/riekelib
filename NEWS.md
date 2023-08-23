@@ -1,4 +1,4 @@
-# riekelib 0.2.0.9000
+# riekelib 0.3.0
 
 ## New features
 
@@ -7,12 +7,24 @@
   * `cov_periodic()`
   * `cov_linear()`
   * `cov_noise()`
-* Add functions for retrieving standard MH recodes:
-  * `set_recode_path()`
-  * `read_recodes()`
-* Other functions
-  * `fix_campus_names()`: convert campus names as they appear in the Qualtrics 
-    UI to the campus shorthand name.
+  
+## Conscious decoupling
+
+Per #22, I'm moving functions that are specific for manipulating Qualtrics survey data for Memorial Hermann into their own package, [`{heRmann}`](https://github.com/markjrieke/heRmann). 
+
+The following functions from riekelib 0.2.0 have been moved:
+
+* `fetch_surveys()`
+* `deduplicate_ip()`
+* `fix_survey_names()`
+* `rnps()`
+* `qnps()`
+
+The following functions were available in riekelib 0.2.0.9000 as of 8/22/23, but were removed on 8/23/23. 
+
+* `set_recode_path()`
+* `read_recodes()`
+* `fix_campus_names()`
 
 # riekelib 0.2.0
 
