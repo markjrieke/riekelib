@@ -1,6 +1,6 @@
 Package: riekelib
 Title: A collection of personal functions
-Version: 0.2.0.9000
+Version: 0.3.0
 Authors@R: 
     person(given = "Mark",
            family = "Rieke",
