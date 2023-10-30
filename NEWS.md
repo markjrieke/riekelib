@@ -1,3 +1,7 @@
+# riekelib 0.3.0.9000
+
+* `theme_rieke()` now correctly applies markdown formatting to axis text.
+
 # riekelib 0.3.0
 
 ## New features

@@ -39,6 +39,8 @@ theme_rieke <- function(base_size = 14,
                    plot.subtitle = ggtext::element_markdown(color = base_color),
                    plot.caption = ggtext::element_markdown(color = colorspace::lighten(base_color, 0.4)),
                    axis.text = ggtext::element_markdown(color = base_color),
+                   axis.text.x = ggtext::element_markdown(color = base_color),
+                   axis.text.y = ggtext::element_markdown(color = base_color),
                    axis.title = ggtext::element_markdown(color = base_color),
                    legend.text = ggtext::element_markdown(color = base_color),
                    legend.title = ggtext::element_markdown(color = base_color))
