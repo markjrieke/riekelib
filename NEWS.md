@@ -1,6 +1,7 @@
 # riekelib 0.3.0.9000
 
 * `theme_rieke()` now correctly applies markdown formatting to axis text.
+* Package startup messages no longer display in non-interactive settings.
 
 # riekelib 0.3.0
 
