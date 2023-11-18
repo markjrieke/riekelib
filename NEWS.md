@@ -1,5 +1,11 @@
 # riekelib 0.3.0.9000
 
+## New features
+
+* `standardize()` function added for centering and scaling values. 
+
+## Minor bug fixes and improvements
+
 * `theme_rieke()` now correctly applies markdown formatting to axis text.
 * Package startup messages no longer display in non-interactive settings.
 
