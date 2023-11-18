@@ -13,6 +13,7 @@ reference:
   - condition_gaussian_process
   - beta_interval
   - normal_interval
+  - standardize
 
 - title: tidyverse extensions
   contents:
