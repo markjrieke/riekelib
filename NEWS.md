@@ -1,4 +1,4 @@
-# riekelib 0.3.0.9000
+# riekelib 0.3.1
 
 ## New features
 
@@ -7,6 +7,7 @@
 ## Minor bug fixes and improvements
 
 * `theme_rieke()` now correctly applies markdown formatting to axis text.
+* `theme_rieke()` now defaults to Playfair Display as the title family.
 * Package startup messages no longer display in non-interactive settings.
 
 # riekelib 0.3.0

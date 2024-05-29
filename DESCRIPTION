@@ -1,6 +1,6 @@
 Package: riekelib
 Title: A collection of personal functions
-Version: 0.3.0.9000
+Version: 0.3.1
 Authors@R: 
     person(given = "Mark",
            family = "Rieke",
@@ -30,4 +30,4 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

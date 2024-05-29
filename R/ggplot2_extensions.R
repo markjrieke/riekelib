@@ -1,9 +1,10 @@
 #' Custom ggplot2 theme
 #'
 #' A custom ggplot2 theme based on my own personal preferences. This assumes the
-#' user (me) is on a windows machine & has the required custom fonts already installed.
+#' user (me) has the required custom fonts already installed.
 #'
 #' @param base_size base font size, given in pts
+#' @param title_ratio ratio of title font size to `base_size`
 #' @param title_family font family for the plot title
 #' @param base_family font family for all text in the plot except the title
 #' @param base_color color for all text in the plot
@@ -19,26 +20,31 @@
 #' library(ggplot2)
 #'
 #' # plotting with NULL families --- must install default fonts locally
+#' # plotting with `title_ratio = 1` since not using the default of Playfair Display
 #' ggplot(mtcars, aes(mpg, wt)) +
 #'   geom_point() +
 #'   theme_rieke(title_family = NULL,
-#'               base_family = NULL) +
+#'               base_family = NULL,
+#'               title_ratio = 1) +
 #'   labs(title = "The title is left-aligned and allows for **bold characters**",
 #'        subtitle = "You can also use any markdown formatting, including *italics*",
 #'        caption = "Note the use of break<br>for line breaks")
 theme_rieke <- function(base_size = 14,
-                        title_family = "Tiempos Text",
+                        title_ratio = 24/14,
+                        title_family = "Playfair Display",
                         base_family = "IBM Plex Sans",
-                        base_color = "gray20") {
+                        base_color = "#363a3c") {
 
   ggplot2::theme_minimal(base_family = base_family,
                          base_size = base_size) +
     ggplot2::theme(plot.title.position = "plot",
                    plot.background = ggplot2::element_rect(fill = "white", color = "white"),
-                   plot.title = ggtext::element_markdown(family = title_family, color = base_color),
+                   plot.title = ggtext::element_markdown(family = title_family,
+                                                         color = base_color,
+                                                         size = base_size * title_ratio),
                    plot.subtitle = ggtext::element_markdown(color = base_color),
                    plot.caption = ggtext::element_markdown(color = colorspace::lighten(base_color, 0.4)),
-                   axis.text = ggtext::element_markdown(color = base_color),
+                   axis.text = ggtext::element_markdown(colour = base_color),
                    axis.text.x = ggtext::element_markdown(color = base_color),
                    axis.text.y = ggtext::element_markdown(color = base_color),
                    axis.title = ggtext::element_markdown(color = base_color),
