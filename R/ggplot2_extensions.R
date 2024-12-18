@@ -11,6 +11,7 @@
 #'
 #' @importFrom ggplot2 theme_minimal
 #' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_line
 #' @importFrom ggplot2 element_rect
 #' @importFrom ggtext element_markdown
 #' @importFrom colorspace lighten
@@ -49,7 +50,9 @@ theme_rieke <- function(base_size = 14,
                    axis.text.y = ggtext::element_markdown(color = base_color),
                    axis.title = ggtext::element_markdown(color = base_color),
                    legend.text = ggtext::element_markdown(color = base_color),
-                   legend.title = ggtext::element_markdown(color = base_color))
+                   legend.title = ggtext::element_markdown(color = base_color),
+                   panel.grid = ggplot2::element_line(color = colorspace::lighten(base_color, 0.9),
+                                                      linewidth = 0.25))
 
 }
 

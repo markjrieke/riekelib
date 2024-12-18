@@ -3,6 +3,7 @@
 ## Minor bug fixes and improvements
 
 * `scale_*_comma()` functions now include a parameter for `accuracy`.
+* `theme_rieke()` now uses a lighter/less intrusive grid.
 
 # riekelib 0.3.1
 
