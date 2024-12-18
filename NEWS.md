@@ -1,5 +1,9 @@
 # riekelib 0.3.2
 
+## New features
+
+* `sys_sleep()` function added as a wrapper around `Sys.sleep()` for sleeping with a progress bar.
+
 ## Minor bug fixes and improvements
 
 * `scale_*_comma()` functions now include a parameter for `accuracy`.
