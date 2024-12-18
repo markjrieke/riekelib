@@ -58,8 +58,10 @@ theme_rieke <- function(base_size = 14,
 #' @description
 #' Format the labels on the x-axis, y-axis, or both
 #'
-#' @param ... parameters passed to `scale_*_continuous`
-#' @param accuracy passed to `scales::label_percent()`
+#' @param ... parameters passed to underlying [`ggplot2`](https://ggplot2.tidyverse.org/)
+#'            scale functions.
+#' @param accuracy passed to underlying [`scales`](https://scales.r-lib.org/)
+#'                 label functions.
 #' @param log10 should the axes be on the log10 scale? Defaults to `FALSE`
 #'
 #' @importFrom ggplot2 scale_x_continuous
@@ -121,15 +123,15 @@ scale_xy_comma <- function(..., log10 = FALSE) {
 
 #' @rdname scale_xy_percent
 #' @export
-scale_x_comma <- function(..., log10 = FALSE) {
+scale_x_comma <- function(..., log10 = FALSE, accuracy = NULL) {
 
   if (log10 == TRUE) {
 
-    out <- ggplot2::scale_x_log10(..., labels = scales::label_comma())
+    out <- ggplot2::scale_x_log10(..., labels = scales::label_comma(accuracy = accuracy))
 
   } else {
 
-    out <- ggplot2::scale_x_continuous(..., labels = scales::label_comma())
+    out <- ggplot2::scale_x_continuous(..., labels = scales::label_comma(accuracy = accuracy))
 
   }
 
@@ -139,15 +141,15 @@ scale_x_comma <- function(..., log10 = FALSE) {
 
 #' @rdname scale_xy_percent
 #' @export
-scale_y_comma <- function(..., log10 = FALSE) {
+scale_y_comma <- function(..., log10 = FALSE, accuracy = NULL) {
 
   if (log10 == TRUE) {
 
-    out <- ggplot2::scale_y_log10(..., labels = scales::label_comma())
+    out <- ggplot2::scale_y_log10(..., labels = scales::label_comma(accuracy = accuracy))
 
   } else {
 
-    out <- ggplot2::scale_y_continuous(..., labels = scales::label_comma())
+    out <- ggplot2::scale_y_continuous(..., labels = scales::label_comma(accuracy = accuracy))
 
   }
 

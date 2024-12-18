@@ -17,14 +17,16 @@ scale_y_percent(..., accuracy = 1)
 
 scale_xy_comma(..., log10 = FALSE)
 
-scale_x_comma(..., log10 = FALSE)
+scale_x_comma(..., log10 = FALSE, accuracy = NULL)
 
-scale_y_comma(..., log10 = FALSE)
+scale_y_comma(..., log10 = FALSE, accuracy = NULL)
 }
 \arguments{
-\item{...}{parameters passed to \verb{scale_*_continuous}}
+\item{...}{parameters passed to underlying \href{https://ggplot2.tidyverse.org/}{\code{ggplot2}}
+scale functions.}
 
-\item{accuracy}{passed to \code{scales::label_percent()}}
+\item{accuracy}{passed to underlying \href{https://scales.r-lib.org/}{\code{scales}}
+label functions.}
 
 \item{log10}{should the axes be on the log10 scale? Defaults to \code{FALSE}}
 }

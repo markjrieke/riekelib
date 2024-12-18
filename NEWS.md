@@ -1,3 +1,9 @@
+# riekelib 0.3.2
+
+## Minor bug fixes and improvements
+
+* `scale_*_comma()` functions now include a parameter for `accuracy`.
+
 # riekelib 0.3.1
 
 ## New features
