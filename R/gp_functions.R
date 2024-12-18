@@ -227,9 +227,9 @@ condition_gaussian_process <- function(n,
   S <- cov_exp_quad(x_combined, amplitude, length_scale, delta)
 
   # separate out covariance matrix
-  S11 <- S[1:length(x1), 1:length(x1)]
-  S22 <- S[(length(x1) + 1):nrow(S), (length(x1) + 1):ncol(S)]
-  S21 <- S[(length(x1) + 1):nrow(S), 1:length(x1)]
+  S11 <- matrix(S[1:length(x1), 1:length(x1)], nrow = length(x1), ncol = length(x1))
+  S22 <- matrix(S[(length(x1) + 1):nrow(S), (length(x1) + 1):ncol(S)], nrow = length(x2), ncol = length(x2))
+  S21 <- matrix(S[(length(x1) + 1):nrow(S), 1:length(x1)], nrow = length(x2), ncol = length(x1))
   S12 <- t(S21)
 
   # conditional mean/covariance

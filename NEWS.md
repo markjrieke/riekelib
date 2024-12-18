@@ -4,6 +4,7 @@
 
 * `scale_*_comma()` functions now include a parameter for `accuracy`.
 * `theme_rieke()` now uses a lighter/less intrusive grid.
+* `condition_gaussian_process()` no longer throws an error when supplied single values for `x` and `y`.
 
 # riekelib 0.3.1
 
